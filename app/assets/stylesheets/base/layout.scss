@@ -1,0 +1,13 @@
+html,
+body {
+  background-color: $app-background-color;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.Auth {
+  @include display(flex);
+  @include justify-content(center);
+}

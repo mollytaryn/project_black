@@ -1,0 +1,18 @@
+.Area {
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+  background-color: $white;
+  border-radius: 4px;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.Area70 {
+  @include flex(auto 1 65%);
+}
+
+.Area30 {
+  @include flex(auto 1 25%);
+  width: 25%;
+}

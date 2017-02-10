@@ -1,0 +1,6 @@
+.Header {
+  @include display(flex);
+  background-color: $white;
+  border-bottom: $base-border;
+  padding: 0 1em;
+}

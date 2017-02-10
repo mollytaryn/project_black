@@ -1,0 +1,28 @@
+.FieldGroup {
+  padding-top: 1em;
+}
+
+label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: none;
+  border-bottom: $base-border;
+  box-shadow: none;
+  font-size: 0.95rem;
+  line-height: 1.4rem;
+  margin-top: 0.4rem;
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-bottom: $active-border;
+}

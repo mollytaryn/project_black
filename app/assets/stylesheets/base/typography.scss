@@ -1,0 +1,33 @@
+* {
+  font-family: $base-font-family;
+  color: $base-font-color;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin: 0 0 .5rem 0;
+}
+
+a {
+  color: $blue;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: darken($blue, 10%);
+  }
+}
+
+p {
+  font-size: 0.95rem;
+  margin: 1rem 0 0 0;
+}

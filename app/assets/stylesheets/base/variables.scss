@@ -1,0 +1,20 @@
+//****Color Palette****//
+$white: #fff;
+$light-gray: #EEEEEE;
+
+$green: #3DDB7A;
+$blue: #34B4D1;
+$red: #EB5470;
+
+//****Mapped Colors****//
+$action: $green;
+$alert: $red;
+
+$app-background-color: #D1E0E0;
+$base-font-family: 'Montserrat', helvetica, sans-serif;
+$base-font-color: #2E3F52 !default;
+$secondary-font-color: #344557;
+
+$active-border: 3px solid $action;
+$base-border: 3px solid $light-gray;
+$base-border-radius: 6px;
