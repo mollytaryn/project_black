@@ -1,0 +1,17 @@
+.TriangleLeft {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  height: 0;
+  width: 0;
+}
+
+.TriangleLeft-green {
+  @include position(absolute, 20px 0 0 -14px);
+  border-right: 14px solid $green;
+
+}
+
+.TriangleLeft-white {
+  @include position(absolute, 20px 0 0 -10px);
+  border-right: 14px solid $white;
+}
