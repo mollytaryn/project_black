@@ -7,11 +7,45 @@
 
 .TriangleLeft-green {
   @include position(absolute, 20px 0 0 -14px);
+  display: none;
   border-right: 14px solid $green;
 
+  @media #{$large} {
+    display:inline;
+  }
 }
 
 .TriangleLeft-white {
   @include position(absolute, 20px 0 0 -10px);
+  display: none;
   border-right: 14px solid $white;
+
+  @media #{$large} {
+    display:inline;
+  }
+}
+
+.TriangleDown {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  height: 0;
+  width: 0;
+}
+
+.TriangleDown-green {
+  @include position(relative, 46px 0 0 85%);
+  border-top: 14px solid $green;
+
+  @media #{$large} {
+    display:none;
+  }
+}
+
+.TriangleDown-white {
+  @include position(relative, 26px 0 0 85%);
+  border-top: 14px solid $white;
+
+  @media #{$large} {
+    display:none;
+  }
 }
