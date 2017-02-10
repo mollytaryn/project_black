@@ -1,18 +1,32 @@
+.AreaContainer {
+  display: flex;
+  flex-direction: row;
+  flex: 0 1 100%;
+  justify-content: center;
+}
+
 .Area {
-  @include display(flex);
-  @include flex-direction(column);
-  @include justify-content(center);
   background-color: $white;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 2rem;
   padding: 1rem;
 }
 
-.Area70 {
-  @include flex(auto 1 65%);
+.Area65 {
+  flex: auto 1 65%;
+  width: 65%
 }
 
-.Area30 {
-  @include flex(auto 1 25%);
+.Area25 {
+  flex: auto 1 25%;
   width: 25%;
+}
+
+.Area-info {
+  border: 3px solid $green;
+  position: absolute;
+  right: 60px;
 }
