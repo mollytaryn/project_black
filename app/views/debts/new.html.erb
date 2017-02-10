@@ -1,3 +1,41 @@
-<div class="Area">
-  <h1>Add a new debt</h1>
+<div class="AreaContainer">
+  <div class="Area Area25">
+    <h2>Add a new debt</h2>
+    <%= form_for @debt do |f| %>
+      <div class="FieldGroup">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="FieldGroup">
+        <%= f.label :principle_balance %>
+        <div class="FieldGroup-row">
+          <div class="u-displayInline">$</div>
+          <%= f.number_field :principle_balance %>
+        </div>
+      </div>
+      <div class="FieldGroup">
+        <%= f.label :interest_rate %>
+        <div class="FieldGroup-row">
+          <%= f.number_field :interest_rate %>
+          <div class="u-displayInline">%</div>
+        </div>
+      </div>
+      <div class="FieldGroup">
+        <%= f.label :minimum_payment_due, "Minimum Monthly Payment Due" %>
+        <div class="FieldGroup-row">
+          <div class="u-displayInline">$</div>
+          <%= f.number_field :minimum_payment_due %>
+        </div>
+      </div>
+      <div class="FieldGroup">
+        <%= f.submit "Submit", class: "btn" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="Area Area25 Area-info">
+    <div class="TriangleLeft TriangleLeft-green"></div>
+    <div class="TriangleLeft TriangleLeft-white"></div>
+    <h2>Title</h2>
+    <p>Testing</p>
+  </div>
 </div>
