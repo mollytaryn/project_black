@@ -1,7 +1,25 @@
-.Flash-alert {
-  background-color: $alert;
+.Flash {
   color: $white;
   font-size: 0.95rem;
   padding: 1rem;
+  position: absolute;
+  opacity: 0.8;
+  top: 10;
+  left: 0;
   width: 100%;
+  z-index: 10;
 }
+
+.Flash-alert,
+.Flash-error {
+  background-color: $alert;
+}
+
+.Flash-notice {
+  background-color: $blue;
+}
+
+.Flash-success {
+  background-color: $green;
+}
+
