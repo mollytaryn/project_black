@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require_self
 //= require_tree .
+
+'use strict';
+
+window.Black = window.Black || {};
+
+$(document).ready(function () {
+  window.Black.Animations = new Black.Animations();
+});
