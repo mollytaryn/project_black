@@ -1,10 +1,13 @@
 class DebtsController < ApplicationController
-
   before_action :authenticate_user!
 
+  def new
+    @debt = Debt.new
+  end
+
   def create
-    debt = current_user.debts.new(debt_params)
-    if debt.save
+    @debt = current_user.debts.new(debt_params)
+    if @debt.save
       flash[:message] = "You have successfully saved this debt."
     else
       flash[:error] = "There was an issue saving your debt."
