@@ -6,18 +6,20 @@ class LoansController < ApplicationController
   end
 
   def create
-    @loan = current_user.debts.new(loan_params)
-    if @loan.save
-      flash[:message] = "You have successfully saved this debt."
+    @loan = current_user.loans.create(loan_params)
+    if @loan.errors.any?
+      flash[:error] = "There was an issue saving your loan."
+      redirect_to(:back)
     else
-      flash[:error] = "There was an issue saving your debt."
+      flash[:success] = "You have successfully saved this loan."
+      redirect_to loans_path
     end
   end
 
   private
 
   def loan_params
-    params.require(:debt).permit(:name, :principle_balance, :interest_rate, :minimum_payment_due)
+    params.require(:loan).permit(:name, :principle_balance, :interest_rate, :minimum_payment_due)
   end
 
 end
