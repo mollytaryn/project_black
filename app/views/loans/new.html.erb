@@ -1,9 +1,9 @@
 <div class="AreaContainer">
   <div class="Area Area25">
-    <h2>Add a new debt</h2>
-    <%= form_for @debt do |f| %>
+    <h2>Add a new loan</h2>
+    <%= form_for @loan do |f| %>
       <div class="FieldGroup">
-        <%= f.label :name %>
+        <%= f.label :name, "Nickname" %>
         <%= f.text_field :name %>
       </div>
       <div class="FieldGroup">
@@ -35,8 +35,10 @@
   <div class="Area Area25 Area-info">
     <div class="TriangleLeft TriangleLeft-green"></div>
     <div class="TriangleLeft TriangleLeft-white"></div>
-    <h2>Title</h2>
-    <p>Testing</p>
+    <p class="u-bold">Let's get started by tracking your first loan.</p>
+    <p>Give your loan a memorable nickname. This could be anything from the name of the bank who owns the loan, to the type of loan you have, such as "Car Loan."</p>
+    <p>Input your principle balance. This is the amount you still have left to pay on the loan.</p>
+    <p>Add your interest rate, formatted as a percent. <span class="u-green">Correct:</span> 5.6, <span class="u-red">Incorrect:</span> 0.056</p>
     <div class="TriangleDown TriangleDown-green"></div>
     <div class="TriangleDown TriangleDown-white"></div>
   </div>

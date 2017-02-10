@@ -1,6 +1,6 @@
-class CreateDebts < ActiveRecord::Migration
+class CreateLoans < ActiveRecord::Migration
   def change
-    create_table :debts do |t|
+    create_table :loans do |t|
       t.string :name
       t.float :principle_balance
       t.float :interest_rate

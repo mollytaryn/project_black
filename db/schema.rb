@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170116212937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "debts", force: :cascade do |t|
+  create_table "loans", force: :cascade do |t|
     t.string   "name"
     t.float    "principle_balance"
     t.float    "interest_rate"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170116212937) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "debts", ["user_id"], name: "index_debts_on_user_id", using: :btree
+  add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -51,5 +51,5 @@ ActiveRecord::Schema.define(version: 20170116212937) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "debts", "users"
+  add_foreign_key "loans", "users"
 end

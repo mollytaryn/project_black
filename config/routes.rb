@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'home', to: 'dashboard#show', as: :current_user
 
-  resources :debts
+  resources :loans
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
