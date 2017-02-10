@@ -1,4 +1,6 @@
 <header class="Header">
-  <h1>Project Black</h1>
-
+  <div class="Logo Header-logo">project black</div>
+  <% if user_signed_in? %>
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+  <% end %>
 </header>
