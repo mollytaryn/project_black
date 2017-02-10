@@ -10,13 +10,13 @@
         <%= f.label :principle_balance %>
         <div class="FieldGroup-row">
           <div class="u-displayInline">$</div>
-          <%= f.number_field :principle_balance %>
+          <%= f.number_field :principle_balance, step: 0.01 %>
         </div>
       </div>
       <div class="FieldGroup">
         <%= f.label :interest_rate %>
         <div class="FieldGroup-row">
-          <%= f.number_field :interest_rate %>
+          <%= f.number_field :interest_rate, step: 0.01 %>
           <div class="u-displayInline">%</div>
         </div>
       </div>
@@ -24,7 +24,7 @@
         <%= f.label :minimum_payment_due, "Minimum Monthly Payment Due" %>
         <div class="FieldGroup-row">
           <div class="u-displayInline">$</div>
-          <%= f.number_field :minimum_payment_due %>
+          <%= f.number_field :minimum_payment_due, step: 0.01 %>
         </div>
       </div>
       <div class="FieldGroup">
