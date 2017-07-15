@@ -1,6 +1,8 @@
+html { font-size: 0.875em; }
+
 html,
 body {
-  background-color: $app-background-color;
+  background: linear-gradient(135deg, $blue, $aqua);
   height: 100%;
   max-width: 100%;
   margin: 0;

@@ -1,23 +1,33 @@
 //****Color Palette****//
 $white: #fff;
-$light-gray: #EEEEEE;
+$light-gray: #EBEBEB;
+$light-gray-darkened: #D9D9D9;
 
-$green: #3DDB7A;
-$blue: #34B4D1;
-$red: #EB5470;
+$aqua: #2AC1EF;
+$blue: #2A5FEF;
+$creamsicle: #FF744C;
+$gold: #FCB14B;
+$rose: #C43A64;
+$seafoam: #41DAC0;
+
 
 //****Mapped Colors****//
-$action: $green;
-$alert: $red;
+$action: $blue;
+$alert: $rose;
+$error: $rose;
+$success: $aqua;
+$warning: $creamsicle;
 
 $app-background-color: #D1E0E0;
 $base-font-family: 'Montserrat', helvetica, sans-serif;
-$base-font-color: #2E3F52 !default;
+$base-font-color: #1B193D !default;
 $secondary-font-color: #344557;
 
-$active-border: 3px solid $action;
-$base-border: 3px solid $light-gray;
-$base-border-radius: 6px;
+$active-border: 1px solid $action;
+$base-border: 1px solid $light-gray;
+$base-border-radius: 4px;
+$empty-color: $light-gray;
+$empty-color-darkened: $light-gray-darkened;
 
 //****Media Queries****//
 $mobile-only: "only screen and (max-width: 320px)";

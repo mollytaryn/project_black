@@ -5,9 +5,8 @@
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p>Need an account?
-    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-  </p>
+  <p>First time visiting Wittle?</p>
+  <%= link_to "Sign up for a free account", new_registration_path(resource_name) %>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>

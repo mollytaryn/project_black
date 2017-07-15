@@ -8,7 +8,7 @@
 .TriangleLeft-green {
   @include position(absolute, 20px 0 0 -14px);
   display: none;
-  border-right: 14px solid $green;
+  border-right: 14px solid $blue;
 
   @media #{$large} {
     display:inline;
@@ -34,7 +34,7 @@
 
 .TriangleDown-green {
   @include position(relative, 46px 0 0 85%);
-  border-top: 14px solid $green;
+  border-top: 14px solid $blue;
 
   @media #{$large} {
     display:none;

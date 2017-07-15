@@ -4,46 +4,62 @@
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.074em;
   font-weight: 600;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.728em;
   font-weight: 400;
   margin: 0 0 .5rem 0;
 }
 
+h3 {
+  font-size: 1.44em;
+  font-weight: 200;
+  margin: 0 0 .5rem 0;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
 a {
   color: $blue;
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 1em;
   text-decoration: none;
-  text-transform: uppercase;
 
   &:hover,
   &:focus {
-    color: darken($blue, 10%);
+    color: darken($blue, 7%);
   }
 }
 
 p {
-  font-size: 0.95rem;
+  font-size: 1em;
   margin: 1rem 0 0 0;
 }
 
+.u-fontLarge {
+  align-self: center;
+  border-bottom: 3px solid $rose;
+  font-size: 3.2rem;
+  font-weight: 200;
+  padding: 0.5rem 1rem;
+}
+
 .Logo {
-  color: $green;
+  color: $blue;
   font-size: 1.6rem;
   letter-spacing: -1px;
 }
 
 .u-green {
-  color: $green;
+  color: $blue;
 }
 
 .u-red {
-  color: $red;
+  color: $rose;
 }
 
 .u-bold {

@@ -1,11 +1,10 @@
 .Header {
   align-items: center;
   background-color: $white;
-  border-bottom: $base-border;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding: 1em;
+  padding: 1.5rem;
 }
 
 .Header-logo {

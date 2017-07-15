@@ -6,12 +6,12 @@
 
 .FieldGroup-row {
   flex-direction: row;
+  padding-top: 1em;
 }
 
 label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 1em;
+  padding: 0.5rem 0;
   width: 100%;
 }
 
@@ -19,17 +19,20 @@ input[type="email"],
 input[type="number"],
 input[type="text"],
 input[type="password"] {
-  border: none;
-  border-bottom: $base-border;
+  background-color: $empty-color;
+  border: $base-border;
+  border-radius: $base-border-radius;
   box-shadow: none;
-  font-size: 0.95rem;
+  font-size: 1em;
   line-height: 1.4rem;
-  margin-top: 0.4rem;
+  padding: 0.5rem;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
+  border: $active-border;
+  border-radius: $base-border-radius;
   outline: none;
-  border-bottom: $active-border;
 }
+

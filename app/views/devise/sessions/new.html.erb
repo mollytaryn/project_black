@@ -1,29 +1,34 @@
-<div class="Area Area25">
-  <h2>Log in</h2>
+<div class="SplitArea">
+  <div class="SplitArea-left">
+    <h3 class="u-bold">Make your loans work for your life.</h3>
+  </div>
+  <div class="SplitArea-right">
+    <h2>Log in</h2>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="FieldGroup">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <div class="FieldGroup">
-      <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <% if devise_mapping.rememberable? -%>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="FieldGroup">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
       </div>
-    <% end -%>
 
-    <div class="FieldGroup">
-      <%= f.submit "Log in", class: "btn u-fullWidth" %>
+      <div class="FieldGroup">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="FieldGroup-row">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, "Remember me for 30 days" %>
+        </div>
+      <% end -%>
+
+      <div class="FieldGroup">
+        <%= f.submit "Log in", class: "btn u-fullWidth js-submit" %>
+      </div>
+    <% end %>
+    <div class="u-textCenter">
+      <%= render "devise/shared/links" %>
     </div>
-  <% end %>
-  <div class="u-textCenter">
-    <%= render "devise/shared/links" %>
   </div>
 </div>
