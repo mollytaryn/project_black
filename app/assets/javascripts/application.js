@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require Chart.bundle.min
 //= require_self
 //= require_tree .
 
@@ -21,4 +22,5 @@ window.Black = window.Black || {};
 
 $(document).ready(function () {
   window.Black.Animations = new Black.Animations();
+  window.Black.DashboardCharts = new Black.DashboardCharts();
 });
