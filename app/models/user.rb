@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :loans, dependent: :delete_all
+  has_many :sessions, dependent: :delete_all
 
 end
