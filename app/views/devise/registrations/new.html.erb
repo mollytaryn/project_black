@@ -1,32 +1,38 @@
-<div class="Area Area25">
-  <h2>Sign up</h2>
+<div class="SplitArea">
+  <div class="SplitArea-left">
+    <h3 class="u-bold">Welcome to Wittle! 👋</h3>
+    <h3>A reminder&#8212your money is your money. Only you can decide how to use it.</h3>
+    <h3>Proceed with confidence.</h3>
+  </div>
+  <div class="SplitArea-right">
+    <h2>Sign up</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+      <div class="FieldGroup">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
 
-    <div class="FieldGroup">
-      <%= f.label :email %>
-      <%= f.email_field :email, autofocus: true %>
+      <div class="FieldGroup">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="FieldGroup">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="FieldGroup">
+        <%= f.submit "Sign up", class: "btn u-fullWidth" %>
+      </div>
+    <% end %>
+    <div class="u-textCenter">
+      <%= render "devise/shared/links" %>
     </div>
-
-    <div class="FieldGroup">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %>
-      <%= f.password_field :password, autocomplete: "off" %>
-    </div>
-
-    <div class="FieldGroup">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-
-    <div class="FieldGroup">
-      <%= f.submit "Sign up", class: "btn u-fullWidth" %>
-    </div>
-  <% end %>
-  <div class="u-textCenter">
-    <%= render "devise/shared/links" %>
   </div>
 </div>
