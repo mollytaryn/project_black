@@ -4,9 +4,66 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding: 1.5rem;
+  padding: 1.5rem 4.5rem;
 }
 
 .Header-logo {
   margin-right: auto;
 }
+
+.Header-menu {
+  width: 2rem;
+  height: 1.25rem;
+  position: relative;
+  margin: 0 1.5rem 0 0;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.Header-menu span {
+  display: block;
+  position: absolute;
+  height: 0.25rem;
+  width: 100%;
+  background: $empty-color;
+  border-radius: $base-border-radius;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.Header-menu span:nth-child(1) {
+  top: 0px;
+}
+
+.Header-menu span:nth-child(2),
+.Header-menu span:nth-child(3) {
+  top: 0.5rem;
+}
+
+.Header-menu span:nth-child(4) {
+  top: 1rem;
+}
+
+.Header-menu.open span:nth-child(1) {
+  top: 0.5rem;
+  width: 0%;
+  left: 50%;
+}
+
+.Header-menu.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.Header-menu.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.Header-menu.open span:nth-child(4) {
+  top: 0.5rem;
+  width: 0%;
+  left: 50%;
+}
+

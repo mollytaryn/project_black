@@ -22,5 +22,6 @@ window.Black = window.Black || {};
 
 $(document).ready(function () {
   window.Black.Animations = new Black.Animations();
+  window.Black.HeaderMenu = new Black.HeaderMenu();
   window.Black.DashboardCharts = new Black.DashboardCharts();
 });
