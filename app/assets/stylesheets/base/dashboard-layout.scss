@@ -1,0 +1,27 @@
+html { font-size: 1.125em; }
+
+html,
+body {
+  background: $dashboard-background-color;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.Sidebar {
+  background-color: $sidebar-background-color;
+  left: -20rem;
+  height: 100%;
+  padding: 1rem;
+  position: absolute;
+  transition: 0.25s ease-in-out;
+  width: 18rem;
+  z-index: 2;
+}
+
+.Sidebar.is-open {
+  left: 0rem;
+
+}
+

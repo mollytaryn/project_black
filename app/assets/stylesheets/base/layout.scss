@@ -1,8 +1,8 @@
-html { font-size: 0.875em; }
+html { font-size: 1em; }
 
 html,
 body {
-  background: linear-gradient(135deg, $blue, $aqua);
+  background: $form-background-color;
   height: 100%;
   max-width: 100%;
   margin: 0;
