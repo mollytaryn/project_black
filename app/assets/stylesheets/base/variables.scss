@@ -4,21 +4,33 @@ $light-gray: #EBEBEB;
 $light-gray-darkened: #D9D9D9;
 
 $aqua: #2AC1EF;
+$aqua-darkened: #0E95BE;
 $blue: #2A5FEF;
-$creamsicle: #FF744C;
-$gold: #FCB14B;
-$rose: #C43A64;
-$seafoam: #41DAC0;
+$blue-darkened: #0E3DC0;
+$blue-dark: #0A2E90;
+$blue-darkest: #092777;
+$green: #41DAC0;
+$green-darkened: #22AD95;
+$orange: #FF744C;
+$orange-darkened: #FE3900;
+$purple: #8E2AEF;
+$purple-darkened: #680EC0;
+$red: #C43A64;
+$red-darkened: #2047B4;
+$yellow: #FCB14B;
+$yellow-darkened: #F69004;
 
 
 //****Mapped Colors****//
 $action: $blue;
-$alert: $rose;
-$error: $rose;
+$alert: $red;
+$error: $red;
 $success: $aqua;
-$warning: $creamsicle;
+$warning: $orange;
 
-$app-background-color: #D1E0E0;
+$form-background-color: linear-gradient(135deg, $blue, $aqua);
+$dashboard-background-color: linear-gradient(135deg, $purple, $blue);
+$sidebar-background-color: rgba($blue-darkest, 0.9);
 $base-font-family: 'Montserrat', helvetica, sans-serif;
 $base-font-color: #1B193D !default;
 $secondary-font-color: #344557;

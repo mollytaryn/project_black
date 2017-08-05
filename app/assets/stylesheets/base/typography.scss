@@ -40,9 +40,13 @@ p {
   margin: 1rem 0 0 0;
 }
 
+.u-fontInverted {
+  color: $white !important;
+}
+
 .u-fontLarge {
   align-self: center;
-  border-bottom: 3px solid $rose;
+  border-bottom: 3px solid $red;
   font-size: 3.2rem;
   font-weight: 200;
   padding: 0.5rem 1rem;
@@ -59,7 +63,7 @@ p {
 }
 
 .u-red {
-  color: $rose;
+  color: $red;
 }
 
 .u-bold {
