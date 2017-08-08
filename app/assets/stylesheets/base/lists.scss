@@ -1,0 +1,17 @@
+ul {
+  li {
+    list-style-type: none;
+    padding-bottom: 1rem;
+  }
+}
+
+ul.ListInverted {
+  li {
+    color: $white;
+
+    &:hover {
+      color: $action;
+      cursor: pointer;
+    }
+  }
+}

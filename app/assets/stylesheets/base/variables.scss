@@ -11,6 +11,8 @@ $blue-dark: #0A2E90;
 $blue-darkest: #092777;
 $green: #41DAC0;
 $green-darkened: #22AD95;
+$navy: #1B193D;
+$navy-darkened: #030307;
 $orange: #FF744C;
 $orange-darkened: #FE3900;
 $purple: #8E2AEF;
@@ -30,9 +32,9 @@ $warning: $orange;
 
 $form-background-color: linear-gradient(135deg, $blue, $aqua);
 $dashboard-background-color: linear-gradient(135deg, $purple, $blue);
-$sidebar-background-color: rgba($blue-darkest, 0.9);
+$sidebar-background-color: rgba($navy, 0.9);
 $base-font-family: 'Montserrat', helvetica, sans-serif;
-$base-font-color: #1B193D !default;
+$base-font-color: $navy !default;
 $secondary-font-color: #344557;
 
 $active-border: 1px solid $action;

@@ -11,12 +11,13 @@ body {
 
 .Sidebar {
   background-color: $sidebar-background-color;
-  left: -20rem;
+  box-shadow: 0 7px 12px 6px rgba(80,72,195,0.33);
+  left: -15.5rem;
   height: 100%;
-  padding: 1rem;
+  padding: 1.5rem;
   position: absolute;
   transition: 0.25s ease-in-out;
-  width: 18rem;
+  width: 12rem;
   z-index: 2;
 }
 
