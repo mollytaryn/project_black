@@ -1,38 +1,37 @@
 <div class="AreaContainer">
-  <div class="Area Area25">
+  <div class="Area">
     <h2>Add a new loan</h2>
     <%= form_for @loan do |f| %>
-      <div class="FieldGroup">
-        <%= f.label :name, "Nickname" %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="FieldGroup">
-        <%= f.label :principle_balance %>
-        <div class="FieldGroup-row">
-          <div class="u-displayInline">$</div>
-          <%= f.number_field :principle_balance, step: 0.01 %>
-        </div>
-      </div>
-      <div class="FieldGroup">
-        <%= f.label :interest_rate %>
-        <div class="FieldGroup-row">
-          <%= f.number_field :interest_rate, step: 0.01 %>
-          <div class="u-displayInline">%</div>
-        </div>
-      </div>
-      <div class="FieldGroup">
-        <%= f.label :minimum_payment_due, "Minimum Monthly Payment Due" %>
-        <div class="FieldGroup-row">
-          <div class="u-displayInline">$</div>
-          <%= f.number_field :minimum_payment_due, step: 0.01 %>
-        </div>
-      </div>
-      <div class="FieldGroup">
+      <table>
+        <tr>
+          <td><%= f.label :name, "Nickname", class: "LabelInline" %></td>
+          <td></td>
+          <td><%= f.text_field :name, class: "InputInline" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :principle_balance, class: "LabelInline" %></td>
+          <td>$</td>
+          <td><%= f.number_field :principle_balance, step: 0.01, class: "InputInline" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :interest_rate, class: "LabelInline" %></td>
+          <td></td>
+          <td><%= f.number_field :interest_rate, step: 0.01, class: "InputInline" %></td>
+          <td>%</td>
+        </tr>
+        <tr>
+          <td><%= f.label :minimum_payment_due, "Minimum Monthly Payment Due", class: "LabelInline" %></td>
+          <td>$</td>
+          <td><%= f.number_field :minimum_payment_due, step: 0.01, class: "InputInline" %></td>
+          <td></td>
+        </tr>
+      </table>
+      <div class="u-displayRight">
         <%= f.submit "Submit", class: "btn" %>
       </div>
     <% end %>
   </div>
-  <div class="Area Area25 Area-info">
+  <!-- <div class="Area Area25 Area-info">
     <div class="TriangleLeft TriangleLeft-green"></div>
     <div class="TriangleLeft TriangleLeft-white"></div>
     <p class="u-bold">Let's get started by tracking your first loan.</p>
@@ -42,5 +41,5 @@
     <p>Finally, enter your minimum monthly payment. This is the amount you are billed each month. Part of this payment covers your interest while the rest goes toward your principle balance.</p>
     <div class="TriangleDown TriangleDown-green"></div>
     <div class="TriangleDown TriangleDown-white"></div>
-  </div>
+  </div> -->
 </div>
