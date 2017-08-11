@@ -1,10 +1,16 @@
 .Header {
   align-items: center;
   background-color: $white;
+  border-bottom: $base-border;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  padding: 1.5rem 4.5rem;
+  padding: 1.5rem;
+
+  @media #{$large} {
+    border-bottom: none;
+    padding: 1.5rem 4.5rem;
+  }
 }
 
 .Header-logo {
