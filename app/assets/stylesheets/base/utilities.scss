@@ -2,6 +2,11 @@
   display: inline-block;
 }
 
+.u-displayRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .u-fullWidth {
   width: 100%;
 }
