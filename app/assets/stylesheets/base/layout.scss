@@ -1,4 +1,10 @@
-html { font-size: 1em; }
+html {
+  font-size: 0.844em;
+
+  @media #{$large} {
+    font-size: 1.125em;
+  }
+}
 
 html,
 body {

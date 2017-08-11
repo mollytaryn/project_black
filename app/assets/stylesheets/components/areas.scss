@@ -13,7 +13,6 @@
 
 .Area {
   background-color: $white;
-  border-radius: 4px;
   display: flex;
   flex: 0 1 100%;
   flex-direction: column;
@@ -22,8 +21,9 @@
   padding: 1.5rem;
 
   @media #{$large} {
-    margin: 2rem;
+    border-radius: 4px;
     flex: 0 1 40%;
+    margin: 2rem;
   }
 }
 
