@@ -6,14 +6,11 @@ class LoansController < ApplicationController
   end
 
   def create
-    @loan = current_user.loans.create(loan_params)
-    if @loan.errors.any?
-      flash[:error] = "There was an issue saving your loan."
-      redirect_to(:back)
-    else
-      flash[:success] = "You have successfully saved this loan."
-      redirect_to loans_path
-    end
+    @record = current_user.loans.create(loan_params)
+    flash[:success] = "You have successfully saved this loan." unless @record.errors.any?
+    @path = new_loan_path
+    @name = "loan"
+    render 'shared/submit'
   end
 
   private

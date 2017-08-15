@@ -1,28 +1,40 @@
 <div class="AreaContainer">
   <div class="Area">
     <h2>Add a new loan</h2>
-    <%= form_for @loan do |f| %>
+    <%= form_for @loan, class: "js-remoteForm", remote: true do |f| %>
       <table>
         <tr>
-          <td><%= f.label :name, "Nickname", class: "LabelInline" %></td>
+          <td><%= f.label :name, "Nickname", class: "Label Label--inline" %></td>
           <td></td>
-          <td><%= f.text_field :name, class: "InputInline" %></td>
+          <td class="u-column js-fieldContainer">
+            <%= f.text_field :name %>
+            <span class="u-helperText u-red js-errorMessage"></span>
+          </td>
         </tr>
         <tr>
-          <td><%= f.label :principle_balance, class: "LabelInline" %></td>
-          <td>$</td>
-          <td><%= f.number_field :principle_balance, step: 0.01, class: "InputInline" %></td>
+          <td><%= f.label :principle_balance, class: "Label Label--inline" %></td>
+          <td><p class="u-inlineMargin">$</p></td>
+          <td class="u-column js-fieldContainer">
+            <%= f.number_field :principle_balance, step: 0.01 %>
+            <span class="u-helperText u-red js-errorMessage"></span>
+          </td>
         </tr>
         <tr>
-          <td><%= f.label :interest_rate, class: "LabelInline" %></td>
+          <td><%= f.label :interest_rate, class: "Label Label--inline" %></td>
           <td></td>
-          <td><%= f.number_field :interest_rate, step: 0.01, class: "InputInline" %></td>
-          <td>%</td>
+          <td class="u-column js-fieldContainer">
+            <%= f.number_field :interest_rate, step: 0.01 %>
+            <span class="u-helperText u-red js-errorMessage"></span>
+          </td>
+          <td><p class="u-inlineMargin">%</p></td>
         </tr>
         <tr>
-          <td><%= f.label :minimum_payment_due, "Minimum Monthly Payment Due", class: "LabelInline" %></td>
-          <td>$</td>
-          <td><%= f.number_field :minimum_payment_due, step: 0.01, class: "InputInline" %></td>
+          <td><%= f.label :minimum_payment_due, "Minimum monthly payment due", class: "Label Label--inline" %></td>
+          <td><p class="u-inlineMargin">$</p></td>
+          <td class="u-column js-fieldContainer">
+            <%= f.number_field :minimum_payment_due, step: 0.01 %>
+            <span class="u-helperText u-red js-errorMessage"></span>
+          </td>
           <td></td>
         </tr>
       </table>

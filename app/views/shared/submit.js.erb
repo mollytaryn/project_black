@@ -1,0 +1,14 @@
+<% if @record.errors.any? %>
+  <% @record.errors.messages.each do |message| %>
+    (function () {
+      var $input = $('input[id=<%= @name %>_<%= message.first.to_s %>]'),
+          $errorContainer = $input.closest('.js-fieldContainer').find('.js-errorMessage');
+      $input.addClass('InputError');
+      $errorContainer.html('<%= message.last.first %>');
+      $input.on('click', function () {
+        $input.removeClass('InputError');
+        $errorContainer.html('');
+      });
+    }(this));
+  <% end %>
+<% end %>
