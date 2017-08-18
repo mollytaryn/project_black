@@ -1,9 +1,11 @@
 <header class="Header">
-  <div class="Header-menu">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <% if current_user.present? %>
+    <div class="Header-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  <% end %>
   <div class="Logo Header-logo">wittle</div>
 </header>
