@@ -1,4 +1,4 @@
-* {
+body {
   font-family: $base-font-family;
   color: $base-font-color;
 }
@@ -16,12 +16,15 @@ h2 {
 
 h3 {
   font-size: 1.44em;
-  font-weight: 200;
+  font-weight: 600;
   margin: 0 0 .5rem 0;
 }
 
 h4 {
   font-size: 1.2em;
+  font-weight: 100;
+  margin: 0 0 .5rem 0;
+  text-transform: uppercase;
 }
 
 a {
@@ -54,7 +57,11 @@ p {
 }
 
 .u-fontInverted {
-  color: $white !important;
+  color: $white;
+}
+
+.u-number {
+  font-size: 2.5rem;
 }
 
 .u-fontLarge {
