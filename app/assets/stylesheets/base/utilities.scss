@@ -7,6 +7,11 @@
   justify-content: flex-end;
 }
 
+.u-justifyCenter {
+  display: flex;
+  justify-content: center;
+}
+
 .u-column {
   display: flex;
   flex-direction: column;
@@ -18,6 +23,12 @@
 
 .u-marginTop {
   margin-top: 1rem;
+}
+
+.u-marginHeader {
+  @media #{$large} {
+    margin-top: 3rem;
+  }
 }
 
 .u-inlineMargin {
