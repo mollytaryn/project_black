@@ -30,6 +30,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'rb-readline'
 end
 
 group :development do
