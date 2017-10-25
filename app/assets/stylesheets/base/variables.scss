@@ -1,7 +1,7 @@
 //****Color Palette****//
 $white: #fff;
-$light-gray: #EBEBEB;
-$light-gray-darkened: #D9D9D9;
+$gray: #EBEBEB;
+$gray-darkened: #D9D9D9;
 
 $aqua: #2AC1EF;
 $aqua-darkened: #0E95BE;
@@ -25,6 +25,7 @@ $yellow-darkened: #F69004;
 
 //****Mapped Colors****//
 $action: $blue;
+$action-darkened: $blue-darkened;
 $alert: $red;
 $error: $red;
 $success: $aqua;
@@ -38,11 +39,11 @@ $base-font-color: $navy !default;
 $secondary-font-color: #344557;
 
 $active-border: 1px solid $action;
-$base-border: 1px solid $light-gray;
+$base-border: 1px solid $gray;
 $error-border: 1px solid $red;
 $base-border-radius: 4px;
-$empty-color: $light-gray;
-$empty-color-darkened: $light-gray-darkened;
+$empty-color: $gray;
+$empty-color-darkened: $gray-darkened;
 
 //****Media Queries****//
 $mobile-only: "only screen and (max-width: 320px)";
