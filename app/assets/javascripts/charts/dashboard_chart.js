@@ -39,7 +39,9 @@
     });
   };
 
-  Black.DashboardChart = function () {
-    initDashboardChart();
+  Black.DashboardCharts = function () {
+    if ($('.js-dashboardChart').length) {
+      initDashboardChart();
+    }
   };
 }(this));
