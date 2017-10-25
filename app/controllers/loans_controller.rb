@@ -7,7 +7,6 @@ class LoansController < ApplicationController
 
   def create
     @record = current_user.loans.create(loan_params)
-    flash[:success] = "You have successfully saved this loan." unless @record.errors.any?
     @path = new_loan_path
     @name = "loan"
     render 'shared/submit'
