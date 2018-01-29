@@ -2,73 +2,25 @@
   <h2 class="u-fontInverted">New Loan</h2>
 </div>
 <div class="AreaContainer">
-  <div class="Area">
-    <h3><%= "Loan #{current_user.loans.size}" %></h3>
-    <%= form_for @loan, class: "js-remoteForm", remote: true do |f| %>
-      <table>
-        <tr>
-          <td><%= f.label :name, "Nickname", class: "Label Label--inline" %></td>
-          <td></td>
-          <td class="u-column js-fieldContainer">
-            <%= f.text_field :name %>
-            <span class="u-helperText u-red js-errorMessage"></span>
-          </td>
-        </tr>
-        <tr>
-          <td><%= f.label :principle_balance, class: "Label Label--inline" %></td>
-          <td><p class="u-marginInline">$</p></td>
-          <td class="u-column js-fieldContainer">
-            <%= f.number_field :principle_balance, step: 0.01 %>
-            <span class="u-helperText u-red js-errorMessage"></span>
-          </td>
-        </tr>
-        <tr>
-          <td><%= f.label :interest_rate, class: "Label Label--inline" %></td>
-          <td></td>
-          <td class="u-column js-fieldContainer">
-            <%= f.number_field :interest_rate, step: 0.01 %>
-            <span class="u-helperText u-red js-errorMessage"></span>
-          </td>
-          <td><p class="u-marginInline">%</p></td>
-        </tr>
-        <tr>
-          <td><%= f.label :minimum_payment_due, "Minimum monthly payment due", class: "Label Label--inline" %></td>
-          <td><p class="u-marginInline">$</p></td>
-          <td class="u-column js-fieldContainer">
-            <%= f.number_field :minimum_payment_due, step: 0.01 %>
-            <span class="u-helperText u-red js-errorMessage"></span>
-          </td>
-          <td></td>
-        </tr>
-      </table>
-      <div class="u-displayRight">
-        <%= f.submit "Submit", class: "btn" %>
-      </div>
-    <% end %>
-  </div>
-  <!-- <div class="Area Area25 Area-info">
-    <div class="TriangleLeft TriangleLeft-green"></div>
-    <div class="TriangleLeft TriangleLeft-white"></div>
-    <p class="u-bold">Let's get started by tracking your first loan.</p>
-    <p>Give your loan a memorable nickname. Consider using the name of the lender or the type of loan (i.e., "Car Loan") when choosing a nickname.</p>
-    <p>Input your principle balance. This is the amount you still have left to pay on the loan.</p>
-    <p>Add your interest rate, formatted as a percent. <span class="u-green">Correct:</span> 5.6, <span class="u-red">Incorrect:</span> 0.056</p>
-    <p>Finally, enter your minimum monthly payment. This is the amount you are billed each month. Part of this payment covers your interest while the rest goes toward your principle balance.</p>
-    <div class="TriangleDown TriangleDown-green"></div>
-    <div class="TriangleDown TriangleDown-white"></div>
-  </div> -->
+  <% current_user.loans.each do |loan| %>
+    <%= render partial: "show", locals: { loan: loan } %>
+  <% end %>
+  <%= render partial: "new_form" %>
 </div>
+<button class="js-shiftLeft">Left</button>
+<button class="js-shiftRight">Right</button>
 <div class="Carousel">
-  <div class="Carousel-item">
-    <h4>Car Loan</h4>
-    <div class="u-number">$500</div>
-  </div>
-  <div class="Carousel-item">
-    <h4>Car Loan</h4>
-    <div class="u-number">$500</div>
-  </div>
-  <div class="Carousel-item">
-    <h4>Car Loan</h4>
-    <div class="u-number">$500</div>
-  </div>
+  <% current_user.loans.each do |loan| %>
+    <div class="Carousel-item">
+      <h4 class="Carousel-heading"><%= loan.name %></h4>
+      <div class="u-number"><%= loan.principle_balance %></div>
+    </div>
+  <% end %>
 </div>
+
+<!-- <p class="u-bold">Let's get started by tracking your first loan.</p>
+<p>Give your loan a memorable nickname. Consider using the name of the lender or the type of loan (i.e., "Car Loan") when choosing a nickname.</p>
+<p>Input your principle balance. This is the amount you still have left to pay on the loan.</p>
+<p>Add your interest rate, formatted as a percent. <span class="u-green">Correct:</span> 5.6, <span class="u-red">Incorrect:</span> 0.056</p>
+<p>Finally, enter your minimum monthly payment. This is the amount you are billed each month. Part of this payment covers your interest while the rest goes toward your principle balance.</p>
+ -->
