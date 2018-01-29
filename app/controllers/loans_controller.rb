@@ -7,7 +7,7 @@ class LoansController < ApplicationController
 
   def create
     @record = current_user.loans.create(loan_params)
-    @path = new_loan_path
+    @path = continue_loans_path
     @name = "loan"
     render 'shared/submit'
   end
