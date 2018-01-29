@@ -11,4 +11,9 @@
       });
     }(this));
   <% end %>
+<% elsif @path.present? %>
+  (function (window) {
+    window.location = "<%= @path %>";
+  }(window));
 <% end %>
+
