@@ -1,14 +1,12 @@
 <% if @record.errors.any? %>
   <% @record.errors.messages.each do |message| %>
     (function () {
-      var $input = $('input[id=<%= @name %>_<%= message.first.to_s %>]'),
-          $errorContainer = $input.closest('.js-fieldContainer').find('.js-errorMessage');
-      $input.addClass('InputError');
-      $errorContainer.html('<%= message.last.first %>');
-      $input.on('click', function () {
-        $input.removeClass('InputError');
-        $errorContainer.html('');
-      });
+      var $form = $('.js-Form'),
+          $input = $('input[id=<%= @name %>_<%= message.first.to_s %>]');
+
+      if ($form.length) {
+        formErrors($input, '<%= message.last.first %>');
+      }
     }(this));
   <% end %>
 <% elsif @path.present? %>
