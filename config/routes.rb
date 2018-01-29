@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   get 'home', to: 'dashboard#show', as: :current_user
 
-  resources :loans
+  resources :loans, only: [:new, :create, :index] do
+    collection do
+      get 'continue'
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
