@@ -1,7 +1,7 @@
 <% if @record.errors.any? %>
   <% @record.errors.messages.each do |message| %>
     (function () {
-      var $form = $('.js-Form'),
+      var $form = $('.js-form'),
           $input = $('input[id=<%= @name %>_<%= message.first.to_s %>]');
 
       if ($form.length) {

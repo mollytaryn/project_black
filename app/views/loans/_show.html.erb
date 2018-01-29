@@ -1,0 +1,20 @@
+<div class="Area">
+  <h3><%= loan.name %></h3>
+  <table>
+    <tr>
+      <td><label class="Label Label--inline">Principle Balance</label></td>
+      <td class="Value--inline"><%= "$#{loan.principle_balance}" %></td>
+    </tr>
+    <tr>
+      <td><label class="Label Label--inline">Interest Rate</label></td>
+      <td class="Value--inline"><%= "#{loan.interest_rate}%" %></td>
+    </tr>
+    <tr>
+      <td><label class="Label Label--inline">Minimum Monthly Payment Due</label></td>
+      <td class="Value--inline"><%= "$#{loan.minimum_payment_due}" %></td>
+    </tr>
+  </table>
+  <div class="Area-footer u-displayRight">
+    <button class="btn">Test</button>
+  </div>
+</div>
