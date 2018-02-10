@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="82px" viewBox="0 0 82 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>btn / chevron left</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI-style-guide" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1.1-style-guide" transform="translate(-1394.000000, -1808.000000)">
+            <g id="btn-/-chevron-left-selected" transform="translate(1395.000000, 1809.000000)">
+                <g id="btn" transform="translate(40.000000, 40.000000) rotate(-180.000000) translate(-40.000000, -40.000000) ">
+                    <circle id="Oval" stroke="#0E3DC0" fill="#2A5FEF" opacity="0.75" cx="40" cy="40" r="40"></circle>
+                    <polyline id="Path-4" stroke="#FFFFFF" stroke-width="4" points="33.4805348 26 47.5706645 40.0901296 33 54.001992"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
