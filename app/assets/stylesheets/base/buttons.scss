@@ -1,4 +1,4 @@
-.btn {
+.Button {
   background-color: $action;
   border: 1px solid $action-darkened;
   border-radius: $base-border-radius;
@@ -17,7 +17,7 @@
   }
 }
 
-.btn-inverted {
+.Button-inverted {
   background-color: $white;
   border-color: $white;
   color: $action;
