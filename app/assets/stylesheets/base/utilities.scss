@@ -12,6 +12,11 @@
   justify-content: center;
 }
 
+.u-justifySpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
 .u-column {
   display: flex;
   flex-direction: column;

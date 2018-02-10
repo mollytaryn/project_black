@@ -7,8 +7,14 @@
   <% end %>
   <%= render partial: "new_form" %>
 </div>
-<button class="js-shiftLeft">Left</button>
-<button class="js-shiftRight">Right</button>
+<div class="u-justifySpaceBetween">
+  <button class="Button-invisible js-shiftLeft">
+    <%= inline_svg("chevron_left.svg", class: "Icon-shape--action", size: '74px * 74px') %>
+  </button>
+  <button class="Button-invisible js-shiftRight">
+    <%= inline_svg("chevron_right.svg", class: "Icon-shape--action", size: '74px * 74px') %>
+  </button>
+</div>
 <div class="Carousel">
   <% current_user.loans.each do |loan| %>
     <div class="Carousel-item">

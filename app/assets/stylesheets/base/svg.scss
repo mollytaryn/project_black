@@ -1,0 +1,11 @@
+.Icon-shape--action circle {
+  fill: $action;
+  stroke: $action-darkened;
+  transition: 0.3s;
+
+  &:hover,
+  &:focus {
+    fill: $action-darkened;
+    stroke: $blue-dark;
+  }
+}
