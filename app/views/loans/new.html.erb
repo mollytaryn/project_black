@@ -19,7 +19,7 @@
   <% current_user.loans.each do |loan| %>
     <div class="Carousel-item">
       <h4 class="Carousel-heading"><%= loan.name %></h4>
-      <div class="u-number"><%= loan.principle_balance %></div>
+      <div class="u-number"><%= number_to_currency(loan.principle_balance) %></div>
     </div>
   <% end %>
 </div>

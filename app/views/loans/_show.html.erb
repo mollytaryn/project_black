@@ -3,7 +3,7 @@
   <table>
     <tr>
       <td><label class="Label Label--inline">Principle Balance</label></td>
-      <td class="Value--inline"><%= "$#{loan.principle_balance}" %></td>
+      <td class="Value--inline"><%= "#{number_to_currency(loan.principle_balance)}" %></td>
     </tr>
     <tr>
       <td><label class="Label Label--inline">Interest Rate</label></td>
@@ -11,7 +11,7 @@
     </tr>
     <tr>
       <td><label class="Label Label--inline">Minimum Monthly Payment Due</label></td>
-      <td class="Value--inline"><%= "$#{loan.minimum_payment_due}" %></td>
+      <td class="Value--inline"><%= "#{number_to_currency(loan.minimum_payment_due)}" %></td>
     </tr>
   </table>
   <div class="Area-footer u-displayRight">
