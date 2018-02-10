@@ -15,6 +15,7 @@ gem 'devise'
 gem 'bourbon'
 gem "autoprefixer-rails"
 gem "chartjs-ror"
+gem 'inline_svg'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
