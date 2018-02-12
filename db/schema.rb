@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170715200755) do
+ActiveRecord::Schema.define(version: 20180212060846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "loan_categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "loans", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +31,11 @@ ActiveRecord::Schema.define(version: 20170715200755) do
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.date     "due_date"
+    t.integer  "loan_category_id"
   end
 
+  add_index "loans", ["loan_category_id"], name: "index_loans_on_loan_category_id", using: :btree
   add_index "loans", ["user_id"], name: "index_loans_on_user_id", using: :btree
 
   create_table "sessions", force: :cascade do |t|
@@ -61,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170715200755) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "loans", "loan_categories"
   add_foreign_key "loans", "users"
   add_foreign_key "sessions", "users"
 end
