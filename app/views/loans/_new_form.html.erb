@@ -36,6 +36,15 @@
         </td>
         <td></td>
       </tr>
+      <tr>
+        <td><%= f.label :monthly_payment_day, "Monthly payment day", class: "Label Label--inline" %></td>
+        <td></td>
+        <td class="u-column js-fieldContainer">
+          <%= f.number_field :monthly_payment_day %>
+          <span class="u-helperText u-red js-errorMessage"></span>
+        </td>
+        <td></td>
+      </tr>
     </table>
     <div class="u-displayRight">
       <%= f.submit "Submit", class: "Button" %>

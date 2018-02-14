@@ -15,7 +15,7 @@ class LoansController < ApplicationController
   private
 
   def loan_params
-    params.require(:loan).permit(:name, :principle_balance, :interest_rate, :minimum_payment_due)
+    params.require(:loan).permit(:name, :principle_balance, :interest_rate, :minimum_payment_due, :loan_category_id, :monthly_payment_day)
   end
 
 end
