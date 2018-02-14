@@ -3,6 +3,14 @@
   <%= form_for @loan, remote: true do |f| %>
     <table>
       <tr>
+        <td><%= f.label :loan_category_id, "Category", class: "Label Label--inline" %></td>
+        <td></td>
+        <td class="u-column js-fieldContainer">
+          <%= f.collection_select(:loan_category_id, LoanCategory.all, :id, :name) %>
+          <span class="u-helperText u-red js-errorMessage"></span>
+        </td>
+      </tr>
+      <tr>
         <td><%= f.label :name, "Nickname", class: "Label Label--inline" %></td>
         <td></td>
         <td class="u-column js-fieldContainer">
