@@ -16,6 +16,7 @@ label.Label {
   width: 100%;
 }
 
+input[type="date"],
 input[type="email"],
 input[type="number"],
 input[type="text"],
@@ -24,6 +25,7 @@ input[type="password"] {
   border: $base-border;
   border-radius: $base-border-radius;
   box-shadow: none;
+  font-family: $base-font-family;
   font-size: 1em;
   line-height: 1.4rem;
   padding: 0.5rem;

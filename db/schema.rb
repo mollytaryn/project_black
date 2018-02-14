@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180212060846) do
     t.integer  "user_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.integer  "monthly_payment_day"
+    t.date     "next_due_date"
     t.integer  "loan_category_id"
   end
 
