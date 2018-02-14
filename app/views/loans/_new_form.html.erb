@@ -19,7 +19,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.label :principle_balance, class: "Label Label--inline" %></td>
+        <td><%= f.label :principle_balance, "Principle Balance", class: "Label Label--inline" %></td>
         <td><p class="u-marginInline">$</p></td>
         <td class="u-column js-fieldContainer">
           <%= f.number_field :principle_balance, step: 0.01 %>
@@ -27,7 +27,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.label :interest_rate, class: "Label Label--inline" %></td>
+        <td><%= f.label :interest_rate, "Interest Rate", class: "Label Label--inline" %></td>
         <td></td>
         <td class="u-column js-fieldContainer">
           <%= f.number_field :interest_rate, step: 0.01 %>
@@ -36,7 +36,7 @@
         <td><p class="u-marginInline">%</p></td>
       </tr>
       <tr>
-        <td><%= f.label :minimum_payment_due, "Minimum monthly payment due", class: "Label Label--inline" %></td>
+        <td><%= f.label :minimum_payment_due, "Minimum Monthly Payment", class: "Label Label--inline" %></td>
         <td><p class="u-marginInline">$</p></td>
         <td class="u-column js-fieldContainer">
           <%= f.number_field :minimum_payment_due, step: 0.01 %>
@@ -45,7 +45,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><%= f.label :next_due_date, "Next due date", class: "Label Label--inline" %></td>
+        <td><%= f.label :next_due_date, "Next Due Date", class: "Label Label--inline" %></td>
         <td></td>
         <td class="u-column js-fieldContainer">
           <%= f.date_field :next_due_date %>

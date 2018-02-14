@@ -10,8 +10,12 @@
       <td class="Value--inline"><%= "#{loan.interest_rate}%" %></td>
     </tr>
     <tr>
-      <td><label class="Label Label--inline">Minimum Monthly Payment Due</label></td>
+      <td><label class="Label Label--inline">Minimum Monthly Payment</label></td>
       <td class="Value--inline"><%= "#{number_to_currency(loan.minimum_payment_due)}" %></td>
+    </tr>
+    <tr>
+      <td><label class="Label Label--inline">Next Due Date</label></td>
+      <td class="Value--inline"><%= loan.next_due_date.strftime('%B %e') %></td>
     </tr>
   </table>
   <div class="Area-footer u-displayRight">
