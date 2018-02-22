@@ -20,18 +20,52 @@ input[type="date"],
 input[type="email"],
 input[type="number"],
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+select {
   background-color: $empty-color;
   border: $base-border;
   border-radius: $base-border-radius;
   box-shadow: none;
+  box-sizing:content-box;
   font-family: $base-font-family;
   font-size: 1em;
   line-height: 1.4rem;
+  width: 15rem;
   padding: 0.5rem;
 
   &.InputError {
     border: $error-border;
+  }
+
+  &.Input--small {
+    margin-right: 0.5rem;
+    width: 3.75rem;
+
+    &:last-of-type {
+      margin-right: 0rem;
+    }
+  }
+}
+
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, $action 50%),
+    linear-gradient(135deg, $action 50%, transparent 50%);
+  background-position:
+    calc(100% - 1.5em) 1em,
+    calc(100% - 1em) 1em,
+    calc(100% - .5em) .5em;
+  background-size:
+    0.5em 0.5em,
+    0.5em 0.5em,
+    1.5em 1.5em;
+  background-repeat: no-repeat;
+
+  &:hover {
+    background-image:
+      linear-gradient(45deg, transparent 50%, $action-darkened 50%),
+      linear-gradient(135deg, $action-darkened 50%, transparent 50%);
   }
 }
 
