@@ -36,7 +36,7 @@
         <td><p class="u-marginInline">%</p></td>
       </tr>
       <tr>
-        <td><%= f.label :minimum_payment_due, "Minimum Monthly Payment", class: "Label Label--inline" %></td>
+        <td><%= f.label :minimum_payment_due, "Minimum Payment", class: "Label Label--inline" %></td>
         <td><p class="u-marginInline">$</p></td>
         <td class="u-column js-fieldContainer">
           <%= f.number_field :minimum_payment_due, step: 0.01 %>
@@ -45,11 +45,17 @@
         <td></td>
       </tr>
       <tr>
-        <td><%= f.label :next_due_date, "Next Due Date", class: "Label Label--inline" %></td>
+        <td><%= f.label "Next Due Date", class: "Label Label--inline" %></td>
         <td></td>
         <td class="u-column js-fieldContainer">
-          <%= f.date_field :next_due_date %>
-          <span class="u-helperText u-red js-errorMessage"></span>
+          <div>
+            <input class="Input--small" max="12" min="1" name="next_due_date[month]" step="1" type="number" placeholder="mm" />
+            <span class="u-helperText u-red js-errorMessage"></span>
+            <input class="Input--small" max="31" min="1" name="next_due_date[day]" step="1" type="number" placeholder="dd" />
+            <span class="u-helperText u-red js-errorMessage"></span>
+            <input class="Input--small" max="2020" min="2018" name="next_due_date[year]" step="1" type="number" placeholder="yyyy" />
+            <span class="u-helperText u-red js-errorMessage"></span>
+          </div>
         </td>
         <td></td>
       </tr>

@@ -6,7 +6,7 @@ class LoansController < ApplicationController
   end
 
   def create
-    @record = current_user.loans.create(loan_params)
+    @record = current_user.loans.create(complete_params)
     @path = continue_loans_path
     @name = "loan"
     render 'shared/submit'
@@ -14,8 +14,12 @@ class LoansController < ApplicationController
 
   private
 
+  def complete_params
+    loan_params.merge(next_due_date: Date.new(params[:next_due_date][:year].to_i, params[:next_due_date][:month].to_i, params[:next_due_date][:day].to_i))
+  end
+
   def loan_params
-    params.require(:loan).permit(:name, :principle_balance, :interest_rate, :minimum_payment_due, :loan_category_id, :next_due_date)
+    params.require(:loan).permit(:name, :principle_balance, :interest_rate, :minimum_payment_due, :loan_category_id)
   end
 
 end
