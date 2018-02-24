@@ -1,7 +1,7 @@
 .Toodle {
   background-color: $white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
   top: 15%;
@@ -30,6 +30,10 @@
 }
 
 .Toodle-footer {
-  padding: 0 1rem 1rem;
+  padding: 1rem;
   text-align: center;
+}
+
+.Toodle.is-open {
+  display: flex;
 }

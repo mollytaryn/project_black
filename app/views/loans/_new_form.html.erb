@@ -1,7 +1,7 @@
 <div class="Area js-form">
   <div class="u-justifySpaceBetween">
     <h3><%= "Loan #{current_user.loans.size + 1}" %></h3>
-    <%= inline_svg("chevron_right.svg", class: "Icon-shape--action", size: '20px * 20px') %>
+    <%= inline_svg("chevron_right.svg", class: "Icon-shape--action js-Trigger", size: '20px * 20px') %>
   </div>
   <%= form_for @loan, remote: true do |f| %>
     <table>
@@ -63,7 +63,7 @@
         <td></td>
       </tr>
     </table>
-    <div class="u-displayRight">
+    <div class="Area-footer u-displayRight">
       <%= f.submit "Submit", class: "Button" %>
     </div>
   <% end %>

@@ -25,4 +25,5 @@ $(document).ready(function () {
   window.Black.Carousel = new Black.Carousel();
   window.Black.DashboardCharts = new Black.DashboardCharts();
   window.Black.HeaderMenu = new Black.HeaderMenu();
+  window.Black.Toggle = new Black.Toggle();
 });
