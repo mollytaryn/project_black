@@ -50,6 +50,10 @@ a.LinkInverted {
 p {
   font-size: 1em;
   margin: 1rem 0 0 0;
+
+  &:last-of-type {
+    margin-bottom: 1rem;
+  }
 }
 
 .u-helperText {
