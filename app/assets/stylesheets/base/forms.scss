@@ -50,8 +50,8 @@ select {
 select {
   appearance: none;
   background-image:
-    linear-gradient(45deg, transparent 50%, $action 50%),
-    linear-gradient(135deg, $action 50%, transparent 50%);
+    linear-gradient(45deg, transparent 50%, $gray-darkened 50%),
+    linear-gradient(135deg, $gray-darkened 50%, transparent 50%);
   background-position:
     calc(100% - 1.5em) 1em,
     calc(100% - 1em) 1em,
@@ -64,8 +64,8 @@ select {
 
   &:hover {
     background-image:
-      linear-gradient(45deg, transparent 50%, $action-darkened 50%),
-      linear-gradient(135deg, $action-darkened 50%, transparent 50%);
+      linear-gradient(45deg, transparent 50%, $gray-darkened 50%),
+      linear-gradient(135deg, $gray-darkened 50%, transparent 50%);
   }
 }
 
