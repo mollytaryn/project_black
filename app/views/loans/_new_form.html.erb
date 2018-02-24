@@ -1,5 +1,8 @@
 <div class="Area js-form">
-  <h3><%= "Loan #{current_user.loans.size + 1}" %></h3>
+  <div class="u-justifySpaceBetween">
+    <h3><%= "Loan #{current_user.loans.size + 1}" %></h3>
+    <%= inline_svg("chevron_right.svg", class: "Icon-shape--action", size: '20px * 20px') %>
+  </div>
   <%= form_for @loan, remote: true do |f| %>
     <table>
       <tr>
