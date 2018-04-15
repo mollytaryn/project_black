@@ -1,1 +1,18 @@
-<div><%= line_chart dashboard_data %></div>
+<div class="DashboardContainer u-fontInverted">
+  <div class="u-row">
+    <span class="u-number"><%= number_to_currency(current_user.loans.total, precision: 0) %></span>
+    <span class="u-numberText">total</span>
+  </div>
+  <div class="u-row u-margin">
+    <div><%= line_chart dashboard_data %></div>
+  </div>
+  <div class="TileContainer">
+    <% current_user.loans.each do |loan| %>
+      <div class="Tile js-Tile">
+        <h4 class="Tile-heading"><%= loan.name %></h4>
+        <div class="u-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
