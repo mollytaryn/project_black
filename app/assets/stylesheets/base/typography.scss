@@ -65,15 +65,13 @@ p {
 }
 
 .u-number {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
-.u-fontLarge {
-  align-self: center;
-  border-bottom: 3px solid $red;
-  font-size: 3.2em;
-  font-weight: 200;
-  padding: 0.5rem 1rem;
+.u-numberText {
+  align-self: flex-end;
+  font-size: 0.75em;
+  padding: 0.4rem;
 }
 
 .Logo {

@@ -22,6 +22,11 @@
   flex-direction: column;
 }
 
+.u-row {
+  display: flex;
+  flex-direction: row;
+}
+
 .u-fullWidth {
   width: 100%;
 }
