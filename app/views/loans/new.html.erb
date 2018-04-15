@@ -12,10 +12,10 @@
   <%= inline_svg("chevron_left.svg", class: "Icon-shape--action u-margin js-shiftLeft", size: '74px * 74px') %>
   <%= inline_svg("chevron_right.svg", class: "Icon-shape--action u-margin js-shiftRight", size: '74px * 74px') %>
 </div>
-<div class="Carousel">
+<div class="TileContainer">
   <% current_user.loans.each do |loan| %>
-    <div class="Carousel-item">
-      <h4 class="Carousel-heading"><%= loan.name %></h4>
+    <div class="Tile">
+      <h4 class="Tile-heading"><%= loan.name %></h4>
       <div class="u-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
     </div>
   <% end %>

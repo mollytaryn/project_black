@@ -1,0 +1,26 @@
+.TileContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 1.5rem 1rem;
+
+  @media #{$large} {
+    margin: 0 4.5rem 1rem;
+  }
+}
+
+.Tile {
+  background-color: rgba($navy, 0.7);
+  color: $white;
+  margin: 1rem 0.5rem 0rem 0.5rem;
+  padding: 1rem;
+  width: 10.5rem;
+}
+
+.Tile--selected {
+  background-color: rgba($blue, 0.7);
+}
+
+.Tile-heading {
+  height: 2rem;
+}
