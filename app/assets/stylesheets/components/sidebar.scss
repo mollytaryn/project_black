@@ -18,3 +18,9 @@
 .Sidebar--left.is-open {
   left: 0rem;
 }
+
+.Sidebar-inner {
+  position: relative;
+  top: 4rem;
+  transition: all 0.5s ease 0s;
+}

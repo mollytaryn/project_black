@@ -1,6 +1,17 @@
 (function () {
 
-  var initSidebar = function () {
+  var initScroll = function () {
+    var $container = $('.Sidebar-inner');
+    $('body').scroll(function () {
+      if ($(this).scrollTop() > 70) {
+        $container.css({top: '0'});
+      } else {
+        $container.css({top: '4rem'});
+      }
+    });
+  };
+
+  var initOpen = function () {
     var $menu = $('.Header-menu');
     var $sidebar = $('.Sidebar--left');
 
@@ -11,6 +22,7 @@
   };
 
   Black.Sidebar = function () {
-    initSidebar();
+    initScroll();
+    initOpen();
   };
 }(this));

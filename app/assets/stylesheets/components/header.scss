@@ -6,6 +6,8 @@
   flex-direction: row;
   justify-content: flex-end;
   padding: 1rem;
+  position: relative;
+  z-index: 5;
 
   @media #{$large} {
     border-bottom: none;
