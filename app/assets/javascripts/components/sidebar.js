@@ -1,8 +1,8 @@
 (function () {
 
-  var initHeaderMenu = function () {
+  var initSidebar = function () {
     var $menu = $('.Header-menu');
-    var $sidebar = $('.Sidebar');
+    var $sidebar = $('.Sidebar--left');
 
     $menu.on('click', function () {
       $(this).toggleClass('open');
@@ -10,7 +10,7 @@
     });
   };
 
-  Black.HeaderMenu = function () {
-    initHeaderMenu();
+  Black.Sidebar = function () {
+    initSidebar();
   };
 }(this));
