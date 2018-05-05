@@ -7,8 +7,8 @@
     <div><%= line_chart dashboard_data %></div>
   </div>
   <div class="TileContainer">
-    <% current_user.loans.each do |loan| %>
-      <div class="Tile js-Tile">
+    <% current_user.loans.by_highest_balance.each_with_index do |loan, i| %>
+      <div class="Tile js-Tile <%= 'is-selected' if i == 0 %>">
         <h4 class="Tile-heading"><%= loan.name %></h4>
         <div class="u-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
       </div>
