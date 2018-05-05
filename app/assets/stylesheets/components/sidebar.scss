@@ -19,6 +19,15 @@
   left: 0rem;
 }
 
+.Sidebar--right {
+  right: -18.5rem;
+  width: 15rem;
+}
+
+.Sidebar--right.is-open {
+  right: 0rem;
+}
+
 .Sidebar-inner {
   position: relative;
   top: 4rem;
