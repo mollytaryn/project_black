@@ -60,18 +60,18 @@ p {
   font-size: 0.75em;
 }
 
+.u-helperText--inline {
+  align-self: flex-end;
+  font-size: 0.75em;
+  padding: 1.7rem 0.4rem;
+}
+
 .u-fontInverted {
   color: $white;
 }
 
 .u-number {
   font-size: 2em;
-}
-
-.u-numberText {
-  align-self: flex-end;
-  font-size: 0.75em;
-  padding: 0.4rem;
 }
 
 .Logo {
