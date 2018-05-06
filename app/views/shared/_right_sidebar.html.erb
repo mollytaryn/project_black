@@ -1,5 +1,9 @@
-<div class="Sidebar Sidebar--right">
+<div class="Sidebar Sidebar--right is-open">
   <div class="Sidebar-inner">
+    <div class="CloseButton">
+      <span></span>
+      <span></span>
+    </div>
     <ul class="ListInverted">
       <li><%= link_to('Dashboard', current_user_path, class: "LinkInverted") %></li>
       <li><%= link_to('Your Loans', loans_path, class: "LinkInverted") %></li>

@@ -1,5 +1,24 @@
 (function () {
 
+  var initCloseRight = function () {
+    var $trigger = $('.CloseButton'),
+        $sidebar = $('.Sidebar--right');
+
+    $trigger.on('click', function () {
+      $sidebar.removeClass('is-open');
+    });
+  };
+
+  var initOpenLeft = function () {
+    var $menu = $('.Header-menu'),
+        $sidebar = $('.Sidebar--left');
+
+    $menu.on('click', function () {
+      $(this).toggleClass('open');
+      $sidebar.toggleClass('is-open');
+    });
+  };
+
   var initScroll = function () {
     var $container = $('.Sidebar-inner');
     $('body').scroll(function () {
@@ -11,18 +30,9 @@
     });
   };
 
-  var initOpen = function () {
-    var $menu = $('.Header-menu');
-    var $sidebar = $('.Sidebar--left');
-
-    $menu.on('click', function () {
-      $(this).toggleClass('open');
-      $sidebar.toggleClass('is-open');
-    });
-  };
-
   Black.Sidebar = function () {
+    initCloseRight();
+    initOpenLeft();
     initScroll();
-    initOpen();
   };
 }(this));
