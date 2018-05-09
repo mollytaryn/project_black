@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td><%= f.label :principle_balance, "Principle Balance", class: "Label Label--inline" %></td>
-        <td><p class="u-marginInline">$</p></td>
+        <td><span class="u-textRight">$</span></td>
         <td class="u-column js-fieldContainer">
           <%= f.number_field :principle_balance, step: 0.01 %>
           <span class="u-helperText u-red js-errorMessage"></span>
@@ -36,11 +36,11 @@
           <%= f.number_field :interest_rate, step: 0.01 %>
           <span class="u-helperText u-red js-errorMessage"></span>
         </td>
-        <td><p class="u-marginInline">%</p></td>
+        <td><span>%</span></td>
       </tr>
       <tr>
         <td><%= f.label :minimum_payment_due, "Minimum Payment", class: "Label Label--inline" %></td>
-        <td><p class="u-marginInline">$</p></td>
+        <td><span class="u-textRight">$</span></td>
         <td class="u-column js-fieldContainer">
           <%= f.number_field :minimum_payment_due, step: 0.01 %>
           <span class="u-helperText u-red js-errorMessage"></span>
