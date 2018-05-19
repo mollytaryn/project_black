@@ -4,14 +4,18 @@
       <span></span>
       <span></span>
     </div>
-    <ul class="ListInverted">
-      <li><%= link_to('Dashboard', current_user_path, class: "LinkInverted") %></li>
-      <li><%= link_to('Your Loans', loans_path, class: "LinkInverted") %></li>
-      <li>
-        <% if user_signed_in? %>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "LinkInverted") %>
-        <% end %>
-      </li>
-    </ul>
+    <table>
+      <tr>
+        <td>
+          <label class="Label u-fontInverted">Pay extra $</label>
+        </td>
+        <td>
+          <input class="Input--small js-MonthlyAdditionalPayment" type="text"></input>
+        </td>
+        <td>
+          <label class="Label u-fontInverted">per month</label>
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
