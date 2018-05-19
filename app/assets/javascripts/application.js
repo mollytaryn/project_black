@@ -21,6 +21,7 @@
 window.Black = window.Black || {};
 
 $(document).ready(function () {
+  window.Black.Amortization = new Black.Amortization();
   window.Black.Animations = new Black.Animations();
   window.Black.Carousel = new Black.Carousel();
   window.Black.DashboardCharts = new Black.DashboardCharts();
