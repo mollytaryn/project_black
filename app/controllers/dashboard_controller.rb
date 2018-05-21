@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
   layout 'dashboard'
 
   def show
+    @loans = current_user.loans.by_highest_balance
   end
 
 end
