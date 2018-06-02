@@ -22,7 +22,7 @@
   var initScroll = function () {
     var $container = $('.Sidebar-inner');
     $('body').scroll(function () {
-      if ($(this).scrollTop() > 70) {
+      if ($(this).scrollTop() > 60) {
         $container.css({top: '0'});
       } else {
         $container.css({top: '4rem'});
