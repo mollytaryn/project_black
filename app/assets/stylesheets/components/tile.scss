@@ -14,8 +14,8 @@
   border: 1px solid rgba($navy-darkened, 0.7);
   color: $white;
   margin: 1rem 0.5rem 0rem 0.5rem;
-  padding: 1rem;
-  width: 10.5rem;
+  padding: 0.5rem;
+  width: 8.5rem;
 }
 
 .Tile.is-selected {
@@ -30,6 +30,10 @@
 
 .Tile-heading {
   display: flex;
-  height: 2rem;
+  height: 1.5rem;
   justify-content: space-between;
+}
+
+.Tile-number {
+  font-size: 1.44em;
 }

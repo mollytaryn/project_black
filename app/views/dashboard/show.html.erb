@@ -9,15 +9,15 @@
         <span>Interest</span>
         <span class="u-lineThrough js-InterestSaved"></span>
       </h4>
-      <div class="u-number js-TotalInterest"><%= number_to_currency(@loans.total_interest, precision: 0) %></div>
+      <div class="Tile-number js-TotalInterest"><%= number_to_currency(@loans.total_interest, precision: 0) %></div>
     </div>
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">Principle</h4>
-      <div class="u-number"><%= number_to_currency(@loans.total_principal, precision: 0) %></div>
+      <div class="Tile-number"><%= number_to_currency(@loans.total_principal, precision: 0) %></div>
     </div>
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">Pay Off Date</h4>
-      <div class="u-number"><%= @loans.pay_off_month %></div>
+      <div class="Tile-number"><%= @loans.pay_off_month %></div>
     </div>
   </div>
   <div class="u-row u-margin">
@@ -32,7 +32,7 @@
            data-total-interest="<%= loan.total_interest %>"
            data-all-loan-interest="<%= @loans.total_interest %>">
         <h4 class="Tile-heading"><%= loan.name %></h4>
-        <div class="u-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
+        <div class="Tile-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
       </div>
     <% end %>
   </div>
