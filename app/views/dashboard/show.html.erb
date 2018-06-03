@@ -7,9 +7,11 @@
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">
         <span>Interest</span>
-        <span class="u-lineThrough js-InterestSaved"></span>
+        <span class="u-lineThrough js-InterestSaved">$0</span>
       </h4>
-      <div class="Tile-number js-TotalInterest"><%= number_to_currency(@loans.total_interest, precision: 0) %></div>
+      <div class="Tile-number js-TotalInterest" data-all-loan-interest="<%= @loans.total_interest %>">
+        <%= number_to_currency(@loans.total_interest, precision: 0) %>
+      </div>
     </div>
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">Principle</h4>
@@ -29,8 +31,7 @@
            data-loan-balance="<%= loan.principle_balance %>"
            data-monthly-interest-rate="<%= loan.monthly_interest_rate %>"
            data-min-payment-due="<%= loan.minimum_payment_due %>"
-           data-total-interest="<%= loan.total_interest %>"
-           data-all-loan-interest="<%= @loans.total_interest %>">
+           data-total-interest="<%= loan.total_interest %>">
         <h4 class="Tile-heading"><%= loan.name %></h4>
         <div class="Tile-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
       </div>

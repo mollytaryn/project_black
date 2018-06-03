@@ -47,10 +47,10 @@
   var initSavedInterest = function (selected_loan) {
     var $selectedLoan = (typeof selected_loan == 'undefined' ? $('.js-Tile, .is-selected') : selected_loan),
         loanInterest = $selectedLoan.data('total-interest'),
-        allLoanInterest = $selectedLoan.data('all-loan-interest'),
         $interestSaved = $('.js-InterestSaved'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
-        $totalInterest = $('.js-TotalInterest');
+        $totalInterest = $('.js-TotalInterest'),
+        allLoanInterest = $totalInterest.data('all-loan-interest');
 
     $monthlyAdditionalPayment.keyup(function () {
       var interestSaved = (loanInterest - calculateInterestDue());
@@ -63,15 +63,15 @@
     var $loans = $('.js-Tile'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
         $interestSaved = $('.js-InterestSaved'),
-        $totalInterest = $('.js-TotalInterest');
+        $totalInterest = $('.js-TotalInterest'),
+        allLoanInterest = $totalInterest.data('all-loan-interest');
 
     $loans.on('click', function () {
-      var $selectedLoan = $(this),
-          allLoanInterest = $selectedLoan.data('all-loan-interest');
+      var $selectedLoan = $(this);
 
       $monthlyAdditionalPayment.val('');
       $interestSaved.html('$0');
-      $totalInterest.html(Math.round(allLoanInterest));
+      $totalInterest.html('$' + Math.round(allLoanInterest));
       initSavedInterest($selectedLoan);
     });
   };
