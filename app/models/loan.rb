@@ -49,8 +49,8 @@ class Loan < ActiveRecord::Base
     amortization_schedule(additional_payment).sum(&:first).round(2)
   end
 
-  def total_paid
-    principle_balance + total_interest
+  def total_paid(additional_payment = 0)
+    principle_balance + total_interest(additional_payment)
   end
 
   class << self

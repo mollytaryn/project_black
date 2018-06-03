@@ -26,7 +26,7 @@
 
     function amortizationSchedule(balance, map) {
       monthlyInterestPrincipalBalance = []
-      while (balance > minPaymentDue) {
+      while (parseInt(balance) > parseInt(minPaymentDue)) {
         new_balance = balance - (principalThisMonth(balance) + parseInt(map))
         monthlyInterestPrincipalBalance.push([round(interestThisMonth(balance)), round(principalThisMonth(balance)), round(new_balance)])
         balance = new_balance
@@ -44,23 +44,40 @@
     return interestDue;
   };
 
-  var initSavedInterest = function () {
-    var $selectedLoan = $('js-Tile, .is-selected'),
-        loanInterest = $selectedLoan.data('total-interest')
+  var initSavedInterest = function (selected_loan) {
+    var $selectedLoan = (typeof selected_loan == 'undefined' ? $('.js-Tile, .is-selected') : selected_loan),
+        loanInterest = $selectedLoan.data('total-interest'),
         allLoanInterest = $selectedLoan.data('all-loan-interest'),
         $interestSaved = $('.js-InterestSaved'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
         $totalInterest = $('.js-TotalInterest');
 
     $monthlyAdditionalPayment.keyup(function () {
-      interestSaved = loanInterest - calculateInterestDue()
+      var interestSaved = (loanInterest - calculateInterestDue());
       $interestSaved.html('$' + Math.round(interestSaved));
       $totalInterest.html('$' + Math.round(allLoanInterest - interestSaved));
     });
   };
 
+  var initSelectedLoan = function () {
+    var $loans = $('.js-Tile'),
+        $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
+        $interestSaved = $('.js-InterestSaved'),
+        $totalInterest = $('.js-TotalInterest');
+
+    $loans.on('click', function () {
+      var $selectedLoan = $(this),
+          allLoanInterest = $selectedLoan.data('all-loan-interest');
+
+      $monthlyAdditionalPayment.val('');
+      $interestSaved.html('$0');
+      $totalInterest.html(Math.round(allLoanInterest));
+      initSavedInterest($selectedLoan);
+    });
+  };
 
   Black.Amortization = function () {
     initSavedInterest();
+    initSelectedLoan();
   };
 }(this));
