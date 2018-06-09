@@ -1,10 +1,16 @@
 <div class="DashboardContainer u-fontInverted">
-  <h1 class="u-marginBottom"><%= @loans.first.name %></h1>
+  <h1 class="u-marginBottom js-loanName"><%= @loans.first.name %></h1>
   <div class="u-row">
-    <h2 class="js-TotalPaid"><%= number_to_currency(@loans.first.total_paid, precision: 0) %></h2>
+    <h2 class="js-TotalPaidHeading"><%= number_to_currency(@loans.first.total_paid, precision: 0) %></h2>
     <span class="u-helperText--inline">total repaid</span>
   </div>
   <div class="TileContainer">
+    <div class="Tile Tile--white">
+      <h4 class="Tile-heading">Principal</h4>
+      <div class="Tile-number js-PrincipalTile">
+        <%= number_to_currency(@loans.first.principle_balance, precision: 0) %>
+      </div>
+    </div>
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">
         <span>Interest</span>
@@ -13,10 +19,6 @@
       <div class="Tile-number js-InterestTile">
         <%= number_to_currency(@loans.first.total_interest, precision: 0) %>
       </div>
-    </div>
-    <div class="Tile Tile--white">
-      <h4 class="Tile-heading">Principal</h4>
-      <div class="Tile-number js-PrincipalTile"><%= number_to_currency(@loans.first.principle_balance, precision: 0) %></div>
     </div>
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">Pay Off Date</h4>
@@ -29,12 +31,13 @@
   <div class="TileContainer">
     <% @loans.each_with_index do |loan, i| %>
       <div class="Tile js-Tile <%= 'is-selected' if i == 0 %>"
+           data-name="<%= loan.name %>"
            data-loan-balance="<%= loan.principle_balance %>"
            data-monthly-interest-rate="<%= loan.monthly_interest_rate %>"
            data-min-payment-due="<%= loan.minimum_payment_due %>"
            data-pay-off="<%= loan.pay_off_month %>"
            data-total-interest="<%= loan.total_interest %>"
-           data-total-paid="loan.total_paid">
+           data-total-paid="<%= loan.total_paid %>">
         <h4 class="Tile-heading"><%= loan.name %></h4>
         <div class="Tile-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
       </div>

@@ -52,14 +52,17 @@
   var initSavedInterest = function (selectedLoan) {
     var $selectedLoan = (typeof selectedLoan == 'undefined' ? $('.js-Tile, .is-selected') : selectedLoan),
         loanInterest = $selectedLoan.data('total-interest'),
+        totalPaid = $selectedLoan.data('total-paid'),
         $interestSaved = $('.js-InterestSaved'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
-        $interestTile = $('.js-InterestTile');
+        $interestTile = $('.js-InterestTile'),
+        $totalPaidHeading = $('.js-TotalPaidHeading');
 
     $monthlyAdditionalPayment.keyup(function () {
       var interestSaved = (loanInterest - calculateInterestDue());
       $interestSaved.html(formatCurrency(interestSaved));
       $interestTile.html(formatCurrency(loanInterest - interestSaved));
+      $totalPaidHeading.html(formatCurrency(totalPaid - interestSaved));
     });
   };
 
@@ -74,23 +77,29 @@
     });
   };
 
-  var initSwitchLoanTiles = function () {
+  var initSwitchLoans = function () {
     var $loans = $('.js-Tile'),
+        $loanName = $('.js-loanName'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
         $interestSaved = $('.js-InterestSaved'),
         $interestTile = $('.js-InterestTile'),
         $principalTile = $('.js-PrincipalTile'),
-        $payOffTile = $('.js-PayOffMonthTile');
+        $payOffTile = $('.js-PayOffMonthTile'),
+        $totalPaidHeading = $('.js-TotalPaidHeading');
 
     $loans.on('click', function () {
       var $selectedLoan = $(this),
+          loanName = $selectedLoan.data('name'),
           loanInterest = $selectedLoan.data('total-interest'),
           loanPrincipal = $selectedLoan.data('loan-balance'),
-          loanPayOffMonth = $selectedLoan.data('pay-off');
+          loanPayOffMonth = $selectedLoan.data('pay-off'),
+          loanTotal = $selectedLoan.data('total-paid');
 
       $monthlyAdditionalPayment.val('');
-      $interestSaved.html('$0');
+      $loanName.html(loanName);
+      $totalPaidHeading.html(formatCurrency(loanTotal));
       $interestTile.html(formatCurrency(loanInterest));
+      $interestSaved.html('$0');
       $principalTile.html(formatCurrency(loanPrincipal));
       $payOffTile.html(loanPayOffMonth);
     });
@@ -100,6 +109,6 @@
     initSavedInterest();
     initSavedMonths();
     initSelectedLoan();
-    initSwitchLoanTiles();
+    initSwitchLoans();
   };
 }(this));
