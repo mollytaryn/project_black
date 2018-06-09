@@ -37,6 +37,10 @@ class Loan < ActiveRecord::Base
     amortization_schedule(additional_payment).size
   end
 
+  def pay_off_month(additional_payment = 0)
+    (Date.today + num_payments_left(additional_payment).months).strftime('%b %Y')
+  end
+
   def principal_this_month(balance = principle_balance)
     minimum_payment_due - interest_this_month(balance)
   end
