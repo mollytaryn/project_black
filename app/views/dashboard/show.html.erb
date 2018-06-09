@@ -1,28 +1,28 @@
 <div class="DashboardContainer u-fontInverted">
-  <h1 class="u-marginBottom js-loanName"><%= @loans.first.name %></h1>
+  <h1 class="u-marginBottom js-LoanName"><%= @loans.first.name %></h1>
   <div class="u-row">
-    <h2 class="js-TotalPaidHeading"><%= number_to_currency(@loans.first.total_paid, precision: 0) %></h2>
+    <h2 class="js-LoanTotalPaid"><%= number_to_currency(@loans.first.total_paid, precision: 0) %></h2>
     <span class="u-helperText--inline">total repaid</span>
   </div>
   <div class="TileContainer">
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">Principal</h4>
-      <div class="Tile-number js-PrincipalTile">
+      <div class="Tile-number js-LoanPrincipal">
         <%= number_to_currency(@loans.first.principle_balance, precision: 0) %>
       </div>
     </div>
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">
         <span>Interest</span>
-        <span class="u-lineThrough js-InterestSaved">$0</span>
+        <span class="u-lineThrough js-LoanInterestSaved">$0</span>
       </h4>
-      <div class="Tile-number js-InterestTile">
+      <div class="Tile-number js-LoanInterest">
         <%= number_to_currency(@loans.first.total_interest, precision: 0) %>
       </div>
     </div>
     <div class="Tile Tile--white">
       <h4 class="Tile-heading">Pay Off Date</h4>
-      <div class="Tile-number js-PayOffMonthTile"><%= @loans.first.pay_off_month %></div>
+      <div class="Tile-number js-LoanPayOffMonth"><%= @loans.first.pay_off_month %></div>
     </div>
   </div>
   <div class="u-row u-margin">
@@ -32,12 +32,12 @@
     <% @loans.each_with_index do |loan, i| %>
       <div class="Tile js-Tile <%= 'is-selected' if i == 0 %>"
            data-name="<%= loan.name %>"
-           data-loan-balance="<%= loan.principle_balance %>"
+           data-total-paid="<%= loan.total_paid %>"
+           data-principal="<%= loan.principle_balance %>"
+           data-interest="<%= loan.total_interest %>"
            data-monthly-interest-rate="<%= loan.monthly_interest_rate %>"
            data-min-payment-due="<%= loan.minimum_payment_due %>"
-           data-pay-off="<%= loan.pay_off_month %>"
-           data-total-interest="<%= loan.total_interest %>"
-           data-total-paid="<%= loan.total_paid %>">
+           data-pay-off-month="<%= loan.pay_off_month %>">
         <h4 class="Tile-heading"><%= loan.name %></h4>
         <div class="Tile-number"><%= number_to_currency(loan.principle_balance, precision: 0) %></div>
       </div>

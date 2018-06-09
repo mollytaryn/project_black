@@ -2,14 +2,14 @@
 
   var amortizationSchedule = function () {
     var $selectedLoan = $('js-Tile, .is-selected'),
-        loanBalance = $selectedLoan.data('loan-balance'),
-        monthlyInterestRate = $selectedLoan.data('monthly-interest-rate'),
-        minPaymentDue = $selectedLoan.data('min-payment-due'),
+        loanPrincipal = $selectedLoan.data('principal'),
+        loanMonthlyInterestRate = $selectedLoan.data('monthly-interest-rate'),
+        loanMinPaymentDue = $selectedLoan.data('min-payment-due'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
-        balance = loanBalance;
+        balance = loanPrincipal;
 
     function interestThisMonth(balance) {
-      return balance * monthlyInterestRate;
+      return balance * loanMonthlyInterestRate;
     }
 
     function monthlyAdditionalPayment() {
@@ -17,12 +17,12 @@
     }
 
     function principalThisMonth(balance) {
-      return minPaymentDue - interestThisMonth(balance);
+      return loanMinPaymentDue - interestThisMonth(balance);
     }
 
     function amortizationSchedule(balance, map) {
       var monthlyInterestPrincipalBalance = [];
-      while (parseInt(balance) > parseInt(minPaymentDue)) {
+      while (parseInt(balance) > parseInt(loanMinPaymentDue)) {
         var new_balance = balance - (principalThisMonth(balance) + parseInt(map));
         monthlyInterestPrincipalBalance.push([roundTwoDecimals(interestThisMonth(balance)), roundTwoDecimals(principalThisMonth(balance)), roundTwoDecimals(new_balance)]);
         balance = new_balance
@@ -42,27 +42,27 @@
 
   var initSavedMonths = function (selectedLoan) {
     var $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
-        $payOffMonthTile = $('.js-PayOffMonthTile');
+        $loanPayOffMonthContainer = $('.js-LoanPayOffMonth');
 
     $monthlyAdditionalPayment.keyup(function () {
-      $payOffMonthTile.html(formatPayOffDate(amortizationSchedule().length));
+      $loanPayOffMonthContainer.html(formatPayOffDate(amortizationSchedule().length));
     });
   };
 
   var initSavedInterest = function (selectedLoan) {
     var $selectedLoan = (typeof selectedLoan == 'undefined' ? $('.js-Tile, .is-selected') : selectedLoan),
-        loanInterest = $selectedLoan.data('total-interest'),
-        totalPaid = $selectedLoan.data('total-paid'),
-        $interestSaved = $('.js-InterestSaved'),
-        $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
-        $interestTile = $('.js-InterestTile'),
-        $totalPaidHeading = $('.js-TotalPaidHeading');
+        loanTotal = $selectedLoan.data('total-paid'),
+        loanInterest = $selectedLoan.data('interest'),
+        $loanTotalPaidContainer = $('.js-LoanTotalPaid'),
+        $loanInterestContainer = $('.js-LoanInterest'),
+        $loanInterestSavedContainer = $('.js-LoanInterestSaved'),
+        $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment');
 
     $monthlyAdditionalPayment.keyup(function () {
-      var interestSaved = (loanInterest - calculateInterestDue());
-      $interestSaved.html(formatCurrency(interestSaved));
-      $interestTile.html(formatCurrency(loanInterest - interestSaved));
-      $totalPaidHeading.html(formatCurrency(totalPaid - interestSaved));
+      var loanInterestSaved = (loanInterest - calculateInterestDue());
+      $loanTotalPaidContainer.html(formatCurrency(loanTotal - loanInterestSaved));
+      $loanInterestContainer.html(formatCurrency(loanInterest - loanInterestSaved));
+      $loanInterestSavedContainer.html(formatCurrency(loanInterestSaved));
     });
   };
 
@@ -79,29 +79,29 @@
 
   var initSwitchLoans = function () {
     var $loans = $('.js-Tile'),
-        $loanName = $('.js-loanName'),
-        $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
-        $interestSaved = $('.js-InterestSaved'),
-        $interestTile = $('.js-InterestTile'),
-        $principalTile = $('.js-PrincipalTile'),
-        $payOffTile = $('.js-PayOffMonthTile'),
-        $totalPaidHeading = $('.js-TotalPaidHeading');
+        $loanNameContainer = $('.js-LoanName'),
+        $loanTotalPaidContainer = $('.js-LoanTotalPaid'),
+        $loanPrincipalContainer = $('.js-LoanPrincipal'),
+        $loanInterestContainer = $('.js-LoanInterest'),
+        $loanInterestSavedContainer = $('.js-LoanInterestSaved'),
+        $loanPayOffMonthContainer = $('.js-LoanPayOffMonth'),
+        $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment');
 
     $loans.on('click', function () {
       var $selectedLoan = $(this),
           loanName = $selectedLoan.data('name'),
-          loanInterest = $selectedLoan.data('total-interest'),
-          loanPrincipal = $selectedLoan.data('loan-balance'),
-          loanPayOffMonth = $selectedLoan.data('pay-off'),
-          loanTotal = $selectedLoan.data('total-paid');
+          loanTotal = $selectedLoan.data('total-paid'),
+          loanPrincipal = $selectedLoan.data('principal'),
+          loanInterest = $selectedLoan.data('interest'),
+          loanPayOffMonth = $selectedLoan.data('pay-off-month');
 
       $monthlyAdditionalPayment.val('');
-      $loanName.html(loanName);
-      $totalPaidHeading.html(formatCurrency(loanTotal));
-      $interestTile.html(formatCurrency(loanInterest));
-      $interestSaved.html('$0');
-      $principalTile.html(formatCurrency(loanPrincipal));
-      $payOffTile.html(loanPayOffMonth);
+      $loanNameContainer.html(loanName);
+      $loanTotalPaidContainer.html(formatCurrency(loanTotal));
+      $loanPrincipalContainer.html(formatCurrency(loanPrincipal));
+      $loanInterestContainer.html(formatCurrency(loanInterest));
+      $loanInterestSavedContainer.html('$0');
+      $loanPayOffMonthContainer.html(loanPayOffMonth);
     });
   };
 
