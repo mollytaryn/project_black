@@ -4,18 +4,14 @@
       <span></span>
       <span></span>
     </div>
-    <table>
-      <tr>
-        <td>
-          <label class="Label u-fontInverted">Pay extra $</label>
-        </td>
-        <td>
-          <input class="Input--small js-MonthlyAdditionalPayment" type="text"></input>
-        </td>
-        <td>
-          <label class="Label u-fontInverted">per month</label>
-        </td>
-      </tr>
-    </table>
+    <label class="Label u-fontInverted">Pay extra per month:</label>
+    <div class="u-fontInverted">$
+      <input class="Input--small js-CalcAmortization js-MonthlyAdditionalPayment" type="number">
+    </div>
+    <label class="Label u-fontInverted">Change interest rate:</label>
+    <div class="u-fontInverted">
+      <input class="Input--small js-CalcAmortization js-ChangedInterestRate" type="number" min="0">
+      %
+    </div>
   </div>
 </div>
