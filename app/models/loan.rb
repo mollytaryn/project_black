@@ -13,7 +13,7 @@ class Loan < ActiveRecord::Base
   def amortization_schedule(additional_payment = 0)
     balance = principle_balance
     monthly_interest_principal_balance = []
-    while balance > minimum_payment_due do
+    while balance > minimum_payment_due
       new_balance = balance - (principal_this_month(balance) + additional_payment)
       monthly_interest_principal_balance << [interest_this_month(balance).round(2), principal_this_month(balance).round(2), new_balance.round(2)]
       balance = new_balance
@@ -21,16 +21,17 @@ class Loan < ActiveRecord::Base
     monthly_interest_principal_balance
   end
 
-  def interest_to_decimal
-    interest_rate / 100
+  def growing?(balance = principle_balance, interest = interest_rate)
+    principal_this_month(balance, interest) < 0
   end
 
-  def interest_this_month(balance = principle_balance)
-    balance * monthly_interest_rate
+  def interest_this_month(balance = principle_balance, interest = interest_rate)
+    balance * monthly_interest_rate(interest)
   end
 
-  def monthly_interest_rate
-    interest_to_decimal / 12
+  def max_interest_rate
+    ir = interest_rate
+    growing?(principle_balance, ir) ? calc_max_ir(ir, false, 0.25) : calc_max_ir(ir, true, -0.25) - 0.25
   end
 
   def num_payments_left(additional_payment = 0)
@@ -41,12 +42,8 @@ class Loan < ActiveRecord::Base
     (Date.today + num_payments_left(additional_payment).months).strftime('%b %Y')
   end
 
-  def principal_this_month(balance = principle_balance)
-    minimum_payment_due - interest_this_month(balance)
-  end
-
-  def principal_next_month
-    principle_balance - principal_this_month
+  def principal_this_month(balance = principle_balance, interest = interest_rate)
+    minimum_payment_due - interest_this_month(balance, interest)
   end
 
   def total_interest(additional_payment = 0)
@@ -58,7 +55,6 @@ class Loan < ActiveRecord::Base
   end
 
   class << self
-
     def num_payments_left
       months = 0
       all.each do |loan|
@@ -83,6 +79,22 @@ class Loan < ActiveRecord::Base
       end
       total
     end
+  end
 
+  private
+
+  def calc_max_ir(ir, boolean_value, step_value)
+   until growing?(principle_balance, ir) == boolean_value
+      ir = (ir - step_value)
+    end
+    ir
+  end
+
+  def interest_to_decimal(interest = interest_rate)
+    interest / 100
+  end
+
+  def monthly_interest_rate(interest = interest_rate)
+    interest_to_decimal(interest) / 12
   end
 end
