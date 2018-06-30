@@ -6,6 +6,7 @@
         loanMonthlyInterestRate = $selectedLoan.data('monthly-interest-rate'),
         loanMaxInterestRate = $selectedLoan.data('max-interest-rate'),
         loanMinPaymentDue = $selectedLoan.data('min-payment-due'),
+        $additionalPayment = $('.js-AdditionalPayment'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
         $changedInterestRate = $('.js-ChangedInterestRate'),
         balance = loanPrincipal;
@@ -26,6 +27,10 @@
       return calcMonthlyInterestRate(changedInterestRate < maxInterestRate ? changedInterestRate : maxInterestRate);
     }
 
+    function additionalPayment() {
+      return ($additionalPayment.val().length ? $additionalPayment.val() : 0);
+    }
+
     function monthlyAdditionalPayment() {
       return ($monthlyAdditionalPayment.val().length ? $monthlyAdditionalPayment.val() : 0);
     }
@@ -36,6 +41,7 @@
 
     function amortizationSchedule(balance, map) {
       var monthlyInterestPrincipalBalance = [];
+      balance -= additionalPayment()
       while (parseInt(balance) > parseInt(loanMinPaymentDue)) {
         var new_balance = balance - (principalThisMonth(balance) + parseInt(map));
         monthlyInterestPrincipalBalance.push([roundTwoDecimals(interestThisMonth(balance)), roundTwoDecimals(principalThisMonth(balance)), roundTwoDecimals(new_balance)]);
@@ -77,7 +83,9 @@
       $loanTotalPaidContainer.html(formatCurrency(loanTotal - loanInterestSaved));
       $loanInterestContainer.html(formatCurrency(loanInterest - loanInterestSaved));
       $loanInterestSavedContainer.html(formatCurrency(loanInterestSaved));
-      if (loanInterestSaved < 0) {
+      if (loanInterestSaved >= 0 && $loanInterestSavedContainer.hasClass('u-lineThrough') == false) {
+        $loanInterestSavedContainer.addClass('u-lineThrough')
+      } else if (loanInterestSaved < 0) {
         $loanInterestSavedContainer.removeClass('u-lineThrough')
       }
     });
