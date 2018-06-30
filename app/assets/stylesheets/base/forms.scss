@@ -45,6 +45,21 @@ select {
       margin-right: 0rem;
     }
   }
+
+  &.Input--medium {
+    width: 5rem;
+  }
+}
+
+.InputPrefix {
+  display: inline-block;
+  width: 1em;
+}
+
+.InputSuffix {
+  display: inline-block;
+  text-align: right;
+  width: 1em;
 }
 
 select {
