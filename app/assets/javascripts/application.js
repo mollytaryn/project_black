@@ -25,6 +25,7 @@ $(document).ready(function () {
   window.Black.Animations = new Black.Animations();
   window.Black.Carousel = new Black.Carousel();
   window.Black.DashboardCharts = new Black.DashboardCharts();
+  window.Black.InputErrors = new Black.InputErrors();
   window.Black.Sidebar = new Black.Sidebar();
   window.Black.Tile = new Black.Tile();
   window.Black.Toggle = new Black.Toggle();

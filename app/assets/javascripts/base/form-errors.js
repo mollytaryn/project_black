@@ -3,7 +3,7 @@ var formErrors = function (input, message) {
 
   input.addClass('InputError');
   $errorContainer.html(message);
-  input.on('click', function () {
+  input.on('click keydown', function () {
     input.removeClass('InputError');
     $errorContainer.html('');
   });

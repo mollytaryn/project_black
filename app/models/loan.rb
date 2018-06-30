@@ -34,6 +34,10 @@ class Loan < ActiveRecord::Base
     growing?(principle_balance, ir) ? calc_max_ir(ir, false, 0.25) : calc_max_ir(ir, true, -0.25) - 0.25
   end
 
+  def monthly_interest_rate(interest = interest_rate)
+    interest_to_decimal(interest) / 12
+  end
+
   def num_payments_left(additional_payment = 0)
     amortization_schedule(additional_payment).size
   end
@@ -92,9 +96,5 @@ class Loan < ActiveRecord::Base
 
   def interest_to_decimal(interest = interest_rate)
     interest / 100
-  end
-
-  def monthly_interest_rate(interest = interest_rate)
-    interest_to_decimal(interest) / 12
   end
 end

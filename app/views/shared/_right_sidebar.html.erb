@@ -4,14 +4,18 @@
       <span></span>
       <span></span>
     </div>
-    <label class="Label u-fontInverted">Pay extra per month:</label>
-    <div class="u-fontInverted">$
-      <input class="Input--small js-CalcAmortization js-MonthlyAdditionalPayment" type="number">
+    <div class="FieldGroup">
+      <label class="Label u-fontInverted">Pay extra per month:</label>
+      <div class="u-fontInverted">$
+        <input class="Input--small js-CalcAmortization js-MonthlyAdditionalPayment" type="number">
+      </div>
     </div>
-    <label class="Label u-fontInverted">Change interest rate:</label>
-    <div class="u-fontInverted">
-      <input class="Input--small js-CalcAmortization js-ChangedInterestRate" type="number" min="0">
-      %
+    <div class="FieldGroup js-fieldContainer">
+      <label class="Label u-fontInverted">Change interest rate:</label>
+      <div class="u-fontInverted">
+        <input class="Input--small js-CalcAmortization js-ChangedInterestRate" type="number" min="0" max="<%= @loans.first.max_interest_rate %>">
+      </div>
+      <span class="u-helperText u-red js-errorMessage"></span>
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@
     var $selectedLoan = $('js-Tile, .is-selected'),
         loanPrincipal = $selectedLoan.data('principal'),
         loanMonthlyInterestRate = $selectedLoan.data('monthly-interest-rate'),
+        loanMaxInterestRate = $selectedLoan.data('max-interest-rate'),
         loanMinPaymentDue = $selectedLoan.data('min-payment-due'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
         $changedInterestRate = $('.js-ChangedInterestRate'),
@@ -18,7 +19,11 @@
     }
 
     function monthlyInterestRate(loanInterestRate) {
-      return ($changedInterestRate.val().length ? calcMonthlyInterestRate($changedInterestRate.val()) : loanInterestRate);
+      return ($changedInterestRate.val().length ? validInterestRate($changedInterestRate.val(), loanMaxInterestRate) : loanInterestRate);
+    }
+
+    function validInterestRate(changedInterestRate, maxInterestRate) {
+      return calcMonthlyInterestRate(changedInterestRate < maxInterestRate ? changedInterestRate : maxInterestRate);
     }
 
     function monthlyAdditionalPayment() {
