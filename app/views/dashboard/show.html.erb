@@ -26,7 +26,11 @@
     </div>
   </div>
   <div class="u-row u-margin">
-    <div><%= line_chart dashboard_data %></div>
+    <canvas class="js-dashboardChart"
+            data-principal-balances="<%= @loans.first.amortization_schedule.map(&:last) %>"
+            data-months-array="<%= payments_left_array(@loans.first) %>"
+            width="1000" height="400">
+    </canvas>
   </div>
   <div class="TileContainer">
     <% @loans.each_with_index do |loan, i| %>
