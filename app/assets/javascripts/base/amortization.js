@@ -91,17 +91,6 @@
     });
   };
 
-  var initSelectedLoan = function () {
-    var $loans = $('.js-Tile');
-
-    $loans.on('click', function () {
-      var $selectedLoan = $(this);
-
-      initSavedInterest($selectedLoan);
-      initSavedMonths();
-    });
-  };
-
   var initSwitchLoans = function () {
     var $loans = $('.js-Tile'),
         $loanNameContainer = $('.js-LoanName'),
@@ -118,7 +107,16 @@
           loanTotal = $selectedLoan.data('total-paid'),
           loanPrincipal = $selectedLoan.data('principal'),
           loanInterest = $selectedLoan.data('interest'),
-          loanPayOffMonth = $selectedLoan.data('pay-off-month');
+          loanPayOffMonth = $selectedLoan.data('pay-off-month'),
+          $chartOuterContainer = $('#loanChart'),
+          $chartContainer = $('.js-dashboardChart');
+
+      $chartContainer.remove();
+      $chartOuterContainer.append('<canvas class="js-dashboardChart" width="1000" height="400"></canvas>');
+
+      initAmortizationChart($selectedLoan);
+      initSavedInterest($selectedLoan);
+      initSavedMonths();
 
       $calcAmortization.val('');
       $loanNameContainer.html(loanName);
@@ -130,10 +128,19 @@
     });
   };
 
+  var initAmortizationChart = function (selectedLoan) {
+    var $container = $('.js-dashboardChart'),
+        $selectedLoan = (typeof selectedLoan == 'undefined' ? $('.js-Tile, .is-selected') : selectedLoan);
+
+    if ($container.length) {
+      buildAmortizationChart($container, $selectedLoan);
+    }
+  };
+
   Black.Amortization = function () {
     initSavedInterest();
     initSavedMonths();
-    initSelectedLoan();
     initSwitchLoans();
+    initAmortizationChart();
   };
 }(this));

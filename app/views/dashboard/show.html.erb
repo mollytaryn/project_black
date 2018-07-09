@@ -25,10 +25,8 @@
       <div class="Tile-number js-LoanPayOffMonth"><%= @loans.first.pay_off_month %></div>
     </div>
   </div>
-  <div class="u-row u-margin">
+  <div id="loanChart" class="u-row u-margin">
     <canvas class="js-dashboardChart"
-            data-principal-balances="<%= @loans.first.amortization_schedule.map(&:last) %>"
-            data-months-array="<%= payments_left_array(@loans.first) %>"
             width="1000" height="400">
     </canvas>
   </div>
@@ -38,8 +36,10 @@
            data-name="<%= loan.name %>"
            data-total-paid="<%= loan.total_paid %>"
            data-principal="<%= loan.principle_balance %>"
+           data-principal-balances="<%= loan.amortization_schedule.map(&:last) %>"
            data-interest="<%= loan.total_interest %>"
            data-monthly-interest-rate="<%= loan.monthly_interest_rate %>"
+           data-months-array="<%= payments_left_array(loan) %>"
            data-max-interest-rate="<%= loan.max_interest_rate %>"
            data-min-payment-due="<%= loan.minimum_payment_due %>"
            data-pay-off-month="<%= loan.pay_off_month %>">

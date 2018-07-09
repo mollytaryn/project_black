@@ -1,84 +1,71 @@
-(function () {
+Chart.defaults.global.defaultFontColor = "#fff";
+Chart.defaults.global.defaultFontFamily = "Montserrat";
 
-  var initDashboardChart = function () {
-    var $container = $('.js-dashboardChart'),
-        principalBalances = $container.data('principal-balances'),
-        monthsLeft = $container.data('months-array');
+var lineChartDataset = function (label, balances, color, borderDash) {
+  dataset = {
+    label: label,
+    data: balances,
+    backgroundColor: "rgba(0,0,0,0)",
+    borderColor: color,
+    borderWidth: 4,
+    borderDash: [borderDash],
+    lineTension: 0,
+    pointRadius: 0,
+    pointHitRadius: 5,
+    pointHoverBackgroundColor: color,
+    pointHoverBorderColor: "#fff",
+    pointHoverBorderWidth: 3,
+    pointHoverRadius: 10,
+  }
+  return dataset;
+};
 
-    Chart.defaults.global.defaultFontColor = "#fff";
-    Chart.defaults.global.defaultFontFamily = "Montserrat";
+var buildAmortizationChart = function (container, selectedLoan) {
+  var principalBalances = selectedLoan.data('principal-balances'),
+      monthsLeft = selectedLoan.data('months-array');
 
-    var dashboardChart = new Chart($container, {
-      type: 'line',
-      data: {
-        labels: monthsLeft,
-        datasets: [{
-          label: "My First dataset",
-          data: principalBalances,
-          backgroundColor: "rgba(0,0,0,0)",
-          borderColor: "#2ac1ef",
-          borderWidth: 4,
-          lineTension: 0,
-          pointRadius: 0,
-          pointHitRadius: 5,
-          pointHoverBackgroundColor: "#2ac1ef",
-          pointHoverBorderColor: "#fff",
-          pointHoverBorderWidth: 3,
-          pointHoverRadius: 10,
-        },
-        {
-          label: "My Second dataset",
-          data: principalBalances,
-          backgroundColor: "rgba(0,0,0,0)",
-          borderColor: "#fff",
-          borderDash: [5],
-          pointRadius: 0,
-          pointHoverBackgroundColor: "#000",
-          pointHoverBorderColor: "#fff",
-          pointHoverBorderWidth: 2,
-          pointHoverRadius: 6,
+  var amortizationChart = new Chart(container, {
+    type: 'line',
+    data: {
+      labels: monthsLeft,
+      datasets: [
+        lineChartDataset("Current", principalBalances, "#2ac1ef", 0),
+        lineChartDataset("Saved", principalBalances, "#fff", 5)
+      ]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          ticks: {
+            autoSkip: true,
+            maxTicksLimit: 12,
+            callback: function(value, index, values) {
+              return formatPayOffDate(value);
+            }
+          }
+        }],
+        yAxes: [{
+          gridLines: {
+            display: false,
+            drawBorder: false
+          },
+          ticks: {
+            callback: function(value, index, values) {
+                return '$' + value;
+            }
+          }
         }]
       },
-      options: {
-        scales: {
-          xAxes: [{
-            gridLines: {
-              display: false,
-              drawBorder: false
-            },
-            ticks: {
-              autoSkip: true,
-              maxTicksLimit: 12,
-              callback: function(value, index, values) {
-                return formatPayOffDate(value);
-              }
-            }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: false,
-              drawBorder: false
-            },
-            ticks: {
-              callback: function(value, index, values) {
-                  return '$' + value;
-              }
-            }
-          }]
-        },
-        tooltips: {
-          intersect: false,
-          position: 'nearest',
-          mode: 'index',
-          axis: 'y'
-        }
+      tooltips: {
+        intersect: false,
+        position: 'nearest',
+        mode: 'index',
+        axis: 'y'
       }
-    });
-  };
-
-  Black.DashboardCharts = function () {
-    if ($('.js-dashboardChart').length) {
-      initDashboardChart();
     }
-  };
-}(this));
+  });
+};
