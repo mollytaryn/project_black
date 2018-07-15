@@ -2,7 +2,7 @@
   <h1 class="u-marginBottom js-LoanName"><%= @loans.first.name %></h1>
   <div class="u-row">
     <h2 class="js-LoanTotalPaid"><%= number_to_currency(@loans.first.total_paid, precision: 0) %></h2>
-    <span class="u-helperText--inline">total repaid</span>
+    <span class="u-helperText--inline">paid at end</span>
   </div>
   <div class="TileContainer">
     <div class="Tile Tile--white">

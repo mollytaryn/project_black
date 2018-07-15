@@ -7,9 +7,8 @@ var lineChartDataset = function (label, balances, color, borderDash) {
     data: balances,
     backgroundColor: "rgba(0,0,0,0)",
     borderColor: color,
-    borderWidth: 4,
+    borderWidth: 3,
     borderDash: [borderDash],
-    lineTension: 0,
     pointRadius: 0,
     pointHitRadius: 5,
     pointHoverBackgroundColor: color,
@@ -30,7 +29,7 @@ var buildAmortizationChart = function (container, selectedLoan) {
       labels: monthsLeft,
       datasets: [
         lineChartDataset("Current", principalBalances, "#2ac1ef", 0),
-        lineChartDataset("Saved", principalBalances, "#fff", 5)
+        lineChartDataset("Saved", principalBalances, "#fff", 7)
       ]
     },
     options: {
@@ -68,4 +67,10 @@ var buildAmortizationChart = function (container, selectedLoan) {
       }
     }
   });
+  return amortizationChart;
+};
+
+var updateAmortizationChart = function(chart, updatedBalances) {
+  chart.data.datasets[1].data = updatedBalances
+  chart.update();
 };

@@ -9,87 +9,126 @@
         $additionalPayment = $('.js-AdditionalPayment'),
         $monthlyAdditionalPayment = $('.js-MonthlyAdditionalPayment'),
         $changedInterestRate = $('.js-ChangedInterestRate'),
-        balance = loanPrincipal;
+        balance = loanPrincipal,
+        monthlyIR = monthlyInterestRate(loanMonthlyInterestRate);
+
+    function additionalPayment() {
+      return ($additionalPayment.val().length ? $additionalPayment.val() : 0);
+    }
 
     function calcMonthlyInterestRate(interestRate) {
       return ((interestRate / 100) / 12);
     }
 
+    function changedInterestRate() {
+      return ($changedInterestRate.val().length ? $changedInterestRate.val() : 0);
+    }
+
     function interestThisMonth(balance) {
-      return balance * monthlyInterestRate(loanMonthlyInterestRate);
-    }
-
-    function monthlyInterestRate(loanInterestRate) {
-      return ($changedInterestRate.val().length ? validInterestRate($changedInterestRate.val(), loanMaxInterestRate) : loanInterestRate);
-    }
-
-    function validInterestRate(changedInterestRate, maxInterestRate) {
-      return calcMonthlyInterestRate(changedInterestRate < maxInterestRate ? changedInterestRate : maxInterestRate);
-    }
-
-    function additionalPayment() {
-      return ($additionalPayment.val().length ? $additionalPayment.val() : 0);
+      return balance * monthlyIR;
     }
 
     function monthlyAdditionalPayment() {
       return ($monthlyAdditionalPayment.val().length ? $monthlyAdditionalPayment.val() : 0);
     }
 
-    function principalThisMonth(balance) {
-      return loanMinPaymentDue - interestThisMonth(balance);
+    function monthlyInterestRate(loanInterestRate) {
+      var changedIR = changedInterestRate();
+      return (changedIR.length ? validInterestRate(changedIR, loanMaxInterestRate) : loanInterestRate);
     }
 
-    function amortizationSchedule(balance, map) {
-      var monthlyInterestPrincipalBalance = [];
-      balance -= additionalPayment()
+    function principalThisMonth(balance, interest) {
+      return (loanMinPaymentDue - interest);
+    }
+
+    function validInterestRate(changedInterestRate, maxInterestRate) {
+      var changedInterestRate = parseFloat(changedInterestRate),
+          maxInterestRate = parseFloat(maxInterestRate),
+          interestRate = (changedInterestRate < maxInterestRate ? changedInterestRate : maxInterestRate);
+
+      return calcMonthlyInterestRate(interestRate);
+    }
+
+    function schedule(balance, map) {
+      var i = 0,
+          monthlyInterestPrincipalBalance = [];
+
+      balance -= additionalPayment();
+
       while (parseInt(balance) > parseInt(loanMinPaymentDue)) {
-        var new_balance = balance - (principalThisMonth(balance) + parseInt(map));
-        monthlyInterestPrincipalBalance.push([roundTwoDecimals(interestThisMonth(balance)), roundTwoDecimals(principalThisMonth(balance)), roundTwoDecimals(new_balance)]);
-        balance = new_balance
+        var interest = interestThisMonth(balance),
+            principal = principalThisMonth(balance, interest),
+            new_balance = balance - (principal + parseInt(map));
+
+        monthlyInterestPrincipalBalance.push([roundTwoDecimals(interest), roundTwoDecimals(principal), roundTwoDecimals(new_balance)]);
+        balance = new_balance;
+        if(i >= 600) {break;}
+        i++;
       }
       return monthlyInterestPrincipalBalance;
     }
-    return amortizationSchedule(balance, monthlyAdditionalPayment());
+
+    return schedule(balance, monthlyAdditionalPayment());
   }
 
-  var calculateInterestDue = function () {
+  var buildNewChartContainer = function () {
+    var $chartContainer = $('.js-dashboardChart'),
+        $chartOuterContainer = $('#loanChart');
+
+    $chartContainer.remove();
+    $chartOuterContainer.append('<canvas class="js-dashboardChart" width="1000" height="400"></canvas>');
+  }
+
+  var calculateInterestDue = function (amortSched) {
     var interestDue = 0;
-    $.each(amortizationSchedule(), function(i, v) {
+
+    $.each(amortSched, function(i, v) {
       interestDue += v[0];
     });
     return interestDue;
-  };
+  }
 
-  var initSavedMonths = function (selectedLoan) {
-    var $calcAmortization = $('.js-CalcAmortization'),
-        $loanPayOffMonthContainer = $('.js-LoanPayOffMonth');
+  var principalBalancesSchedule = function (amortSched) {
+    var principalBalances = [];
 
-    $calcAmortization.keyup(function () {
-      $loanPayOffMonthContainer.html(formatPayOffDate(amortizationSchedule().length));
+    $.map(amortSched, function(v) {
+      principalBalances.push(v[2])
     });
-  };
+    return principalBalances;
+  }
+
+  var setChangedInterestClass = function (container, loanInterestSaved) {
+    if (loanInterestSaved >= 0 && container.hasClass('u-lineThrough') == false) {
+      container.addClass('u-lineThrough')
+    } else if (loanInterestSaved < 0) {
+      container.removeClass('u-lineThrough')
+    }
+  }
 
   var initSavedInterest = function (selectedLoan) {
     var $selectedLoan = (typeof selectedLoan == 'undefined' ? $('.js-Tile, .is-selected') : selectedLoan),
         loanTotal = $selectedLoan.data('total-paid'),
         loanInterest = $selectedLoan.data('interest'),
+        $chartContainer = $('.js-dashboardChart'),
+        $loanPayOffMonthContainer = $('.js-LoanPayOffMonth'),
         $loanTotalPaidContainer = $('.js-LoanTotalPaid'),
         $loanInterestContainer = $('.js-LoanInterest'),
         $loanInterestSavedContainer = $('.js-LoanInterestSaved'),
-        $calcAmortization = $('.js-CalcAmortization');
+        $calcAmortization = $('.js-CalcAmortization'),
+        amortizationChart = buildAmortizationChart($chartContainer, $selectedLoan);
 
     $calcAmortization.keyup(function () {
-      var loanInterestSaved = (loanInterest - calculateInterestDue());
+      var amortSched = amortizationSchedule(),
+          loanInterestSaved = (loanInterest - calculateInterestDue(amortSched));
+
+      setChangedInterestClass($loanInterestSavedContainer, loanInterestSaved)
+      updateAmortizationChart(amortizationChart, principalBalancesSchedule(amortSched));
+      $loanPayOffMonthContainer.html(formatPayOffDate(amortSched.length));
       $loanTotalPaidContainer.html(formatCurrency(loanTotal - loanInterestSaved));
       $loanInterestContainer.html(formatCurrency(loanInterest - loanInterestSaved));
       $loanInterestSavedContainer.html(formatCurrency(loanInterestSaved));
-      if (loanInterestSaved >= 0 && $loanInterestSavedContainer.hasClass('u-lineThrough') == false) {
-        $loanInterestSavedContainer.addClass('u-lineThrough')
-      } else if (loanInterestSaved < 0) {
-        $loanInterestSavedContainer.removeClass('u-lineThrough')
-      }
     });
-  };
+  }
 
   var initSwitchLoans = function () {
     var $loans = $('.js-Tile'),
@@ -107,16 +146,10 @@
           loanTotal = $selectedLoan.data('total-paid'),
           loanPrincipal = $selectedLoan.data('principal'),
           loanInterest = $selectedLoan.data('interest'),
-          loanPayOffMonth = $selectedLoan.data('pay-off-month'),
-          $chartOuterContainer = $('#loanChart'),
-          $chartContainer = $('.js-dashboardChart');
+          loanPayOffMonth = $selectedLoan.data('pay-off-month');
 
-      $chartContainer.remove();
-      $chartOuterContainer.append('<canvas class="js-dashboardChart" width="1000" height="400"></canvas>');
-
-      initAmortizationChart($selectedLoan);
+      buildNewChartContainer();
       initSavedInterest($selectedLoan);
-      initSavedMonths();
 
       $calcAmortization.val('');
       $loanNameContainer.html(loanName);
@@ -126,21 +159,10 @@
       $loanInterestSavedContainer.html('$0');
       $loanPayOffMonthContainer.html(loanPayOffMonth);
     });
-  };
-
-  var initAmortizationChart = function (selectedLoan) {
-    var $container = $('.js-dashboardChart'),
-        $selectedLoan = (typeof selectedLoan == 'undefined' ? $('.js-Tile, .is-selected') : selectedLoan);
-
-    if ($container.length) {
-      buildAmortizationChart($container, $selectedLoan);
-    }
-  };
+  }
 
   Black.Amortization = function () {
     initSavedInterest();
-    initSavedMonths();
     initSwitchLoans();
-    initAmortizationChart();
-  };
+  }
 }(this));
