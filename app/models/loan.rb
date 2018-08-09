@@ -1,5 +1,4 @@
-class Loan < ActiveRecord::Base
-
+class Loan < ApplicationRecord
   belongs_to :user
   belongs_to :loan_category
 
