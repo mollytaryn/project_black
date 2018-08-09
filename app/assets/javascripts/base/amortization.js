@@ -121,7 +121,7 @@
       var amortSched = amortizationSchedule(),
           loanInterestSaved = (loanInterest - calculateInterestDue(amortSched));
 
-      setChangedInterestClass($loanInterestSavedContainer, loanInterestSaved)
+      setChangedInterestClass($loanInterestSavedContainer, loanInterestSaved);
       updateAmortizationChart(amortizationChart, principalBalancesSchedule(amortSched));
       $loanPayOffMonthContainer.html(formatPayOffDate(amortSched.length));
       $loanTotalPaidContainer.html(formatCurrency(loanTotal - loanInterestSaved));

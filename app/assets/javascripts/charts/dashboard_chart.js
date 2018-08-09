@@ -1,13 +1,13 @@
 Chart.defaults.global.defaultFontColor = "#fff";
 Chart.defaults.global.defaultFontFamily = "Montserrat";
 
-var lineChartDataset = function (label, balances, color, borderDash) {
+var lineChartDataset = function (label, balances, color, width, borderDash) {
   dataset = {
     label: label,
     data: balances,
     backgroundColor: "rgba(0,0,0,0)",
     borderColor: color,
-    borderWidth: 3,
+    borderWidth: width,
     borderDash: [borderDash],
     pointRadius: 0,
     pointHitRadius: 5,
@@ -15,6 +15,7 @@ var lineChartDataset = function (label, balances, color, borderDash) {
     pointHoverBorderColor: "#fff",
     pointHoverBorderWidth: 3,
     pointHoverRadius: 10,
+    lineTension: 0
   }
   return dataset;
 };
@@ -28,8 +29,8 @@ var buildAmortizationChart = function (container, selectedLoan) {
     data: {
       labels: monthsLeft,
       datasets: [
-        lineChartDataset("Current", principalBalances, "#2ac1ef", 0),
-        lineChartDataset("Saved", principalBalances, "#fff", 7)
+        lineChartDataset("Current", principalBalances, "#2ac1ef", 4, 0),
+        lineChartDataset("Saved", [], "#fff", 3, 7)
       ]
     },
     options: {
