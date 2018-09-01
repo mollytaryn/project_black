@@ -1,5 +1,8 @@
 <div class="Area">
-  <h3><%= loan.name %></h3>
+  <div class="u-row">
+    <%= inline_svg("loan/#{loan.loan_category.key}-icon.svg", size: "2em", class: "u-marginRight", aria_hidden: true) %>
+    <h3><%= loan.name %></h3>
+  </div>
   <table>
     <tr>
       <td><label class="Label Label--inline">Principle Balance</label></td>
